@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "updateLabels <- function(mix_prop, locations, rr, sig, nobs, nclust) {\n\n  labels <- labs <- rep(0, nobs)\n  pp <- rep(0,nclust)\n  for(i in 1:nobs) {\n    ptot = 0.0;\n    count = 1;\n    for(h in 1:nclust) {\n      ptot = ptot + mix_prop[h]*dnorm(rr[i], mean=locations[h], sd=sig);\n      pp[h] <- log(mix_prop[h]) + dnorm(rr[i], mean=locations[h], sd=sig,log=TRUE)\n    }\n    pp <- exp(pp)\n    pp <- pp/sum(pp)\n    # sample uniformly from [0,ptot]\n    pcum = 0.0;\n    uu = ptot*runif(1);\n    for(h in 1:nclust) {\n      pcum = pcum + mix_prop[h]*dnorm(rr[i], mean=locations[h], sd=sig)\n      if(uu < pcum) {\n        break;\n      }\n      count = count + 1\n    }\n    labels[i] = count;\n    labs[i] <- sample(nclust, size=1, prob=pp)\n  }   \n  A <- cbind(labels,labs)\n  return(A)\n}\n\nnobs <- 100\nmix_prop <- c(.005,.995)\nlocations <- c(-1,1)\nrr <- rnorm(nobs)\nnclust <- 2\na <- updateLabels(mix_prop, locations, rr, sig, nobs, nclust) \n  \nsum(a[,1] == a[,2])\n\n\n\n\n\n\n\n\n",
+    "created" : 1462905276095.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3186431003",
+    "id" : "4B7C859A",
+    "lastKnownWriteTime" : 0,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled6"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

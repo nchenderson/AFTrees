@@ -1,0 +1,1982 @@
+[
+    {
+        "definitions" : [
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/BirthDeath.cpp",
+                "kind" : 6,
+                "line" : 26,
+                "name" : "PBirth(Node *, Node **, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@PBirth#*$@C@Node#*S0_#*d#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/BirthDeath.cpp",
+                "kind" : 6,
+                "line" : 47,
+                "name" : "DrNogNode(Node *, Node **)",
+                "parent_name" : "",
+                "usr" : "c:@F@DrNogNode#*$@C@Node#*S0_#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/BirthDeath.cpp",
+                "kind" : 6,
+                "line" : 68,
+                "name" : "DrNode(Node *, Node **, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@DrNode#*$@C@Node#*S0_#*d#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/BirthDeath.cpp",
+                "kind" : 6,
+                "line" : 108,
+                "name" : "PrBotNode(Node *, Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@PrBotNode#*$@C@Node#S0_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/BirthDeath.cpp",
+                "kind" : 6,
+                "line" : 149,
+                "name" : "NodeProb(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@NodeProb#*$@C@Node#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/BirthDeath.cpp",
+                "kind" : 6,
+                "line" : 163,
+                "name" : "KillChildren(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@KillChildren#*$@C@Node#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/BirthDeath.cpp",
+                "kind" : 6,
+                "line" : 184,
+                "name" : "BirthDeath(Node *, int *, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@BirthDeath#*$@C@Node#*I#S2_#"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/BirthDeath.cpp",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/BirthDeath.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/CPriParams.h",
+                "kind" : 2,
+                "line" : 1,
+                "name" : "CPriParams",
+                "parent_name" : "",
+                "usr" : "c:@C@CPriParams"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/CPriParams.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/ChangeRule.cpp",
+                "kind" : 6,
+                "line" : 32,
+                "name" : "CatFindBots(Node *, int, int, NodeP *, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@CatFindBots#*$@C@Node#I#I#*S0_#*I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/ChangeRule.cpp",
+                "kind" : 6,
+                "line" : 55,
+                "name" : "FindGoodOrdRules(Node *, int, int &, int &)",
+                "parent_name" : "",
+                "usr" : "c:@F@FindGoodOrdRules#*$@C@Node#I#&I#S2_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/ChangeRule.cpp",
+                "kind" : 6,
+                "line" : 79,
+                "name" : "OrdFindMinMax(Node *, int, int *, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@OrdFindMinMax#*$@C@Node#I#*I#S2_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/ChangeRule.cpp",
+                "kind" : 6,
+                "line" : 94,
+                "name" : "FindGoodCatRules(Node *, int, int *, int &)",
+                "parent_name" : "",
+                "usr" : "c:@F@FindGoodCatRules#*$@C@Node#I#*I#&I#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/ChangeRule.cpp",
+                "kind" : 6,
+                "line" : 171,
+                "name" : "NoZero(int, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@NoZero#I#*I#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/ChangeRule.cpp",
+                "kind" : 6,
+                "line" : 185,
+                "name" : "FirstOne(int, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@FirstOne#I#*I#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/ChangeRule.cpp",
+                "kind" : 6,
+                "line" : 195,
+                "name" : "ChangeRule(Node *, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@ChangeRule#*$@C@Node#*I#"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/ChangeRule.cpp",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/ChangeRule.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/EndNodeModel.h",
+                "kind" : 2,
+                "line" : 4,
+                "name" : "EndNodeModel",
+                "parent_name" : "",
+                "usr" : "c:@C@EndNodeModel"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/EndNodeModel.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 15,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 8,
+                "line" : 18,
+                "name" : "NodeP",
+                "parent_name" : "",
+                "usr" : "c:Funs.h@T@NodeP"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 21,
+                "name" : "MakeBotVec(Node *, NodeP **, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@MakeBotVec#*$@C@Node#**S0_#*I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 45,
+                "name" : "MakeNogVec(Node *, NodeP **, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@MakeNogVec#*$@C@Node#**S0_#*I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 69,
+                "name" : "MakeSwapVec(Node *, NodeP **, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@MakeSwapVec#*$@C@Node#**S0_#*I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 93,
+                "name" : "MakeNotBotVec(Node *, NodeP **, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@MakeNotBotVec#*$@C@Node#**S0_#*I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 118,
+                "name" : "MakeIntVec(List *, int **, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@MakeIntVec#*$@C@List#**I#S3_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 135,
+                "name" : "GetDataInd(Node *, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@GetDataInd#*$@C@Node#*I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 158,
+                "name" : "GetDataInd(Node *, int *, int, double **)",
+                "parent_name" : "",
+                "usr" : "c:@F@GetDataInd#*$@C@Node#*I#I#**d#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 182,
+                "name" : "getMaxDepth(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@getMaxDepth#*$@C@Node#"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 204,
+                "name" : "GetRulePointer(int, int, int, int, Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@GetRulePointer#I#I#I#I#*$@C@Node#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 254,
+                "name" : "RulesDifferent(Rule *, Rule *)",
+                "parent_name" : "",
+                "usr" : "c:@F@RulesDifferent#*$@C@Rule#S0_#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 276,
+                "name" : "ShannonBanksMetric(Node *, Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@ShannonBanksMetric#*$@C@Node#S0_#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 348,
+                "name" : "AndrewsMetric(Node *, Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@AndrewsMetric#*$@C@Node#S0_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 384,
+                "name" : "AddDatChildren(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@AddDatChildren#*$@C@Node#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 410,
+                "name" : "FixDataBelow(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@FixDataBelow#*$@C@Node#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 433,
+                "name" : "UpDateOrdVarAvail(Node *, int, int, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@UpDateOrdVarAvail#*$@C@Node#I#I#I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 460,
+                "name" : "UpDateCatVarAvail(Node *, int, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@UpDateCatVarAvail#*$@C@Node#I#*I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 501,
+                "name" : "UpDateVarAvail(Node *, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@UpDateVarAvail#*$@C@Node#I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 517,
+                "name" : "CheckTree(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@CheckTree#*$@C@Node#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 521,
+                "name" : "RestrictSize(Node **, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@RestrictSize#**$@C@Node#I#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 555,
+                "name" : "Metrop(Node **, int *, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@Metrop#**$@C@Node#*I#S3_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+                "kind" : 6,
+                "line" : 611,
+                "name" : "countVarUsage(std::vector<Node *> &, std::vector<int> &)",
+                "parent_name" : "",
+                "usr" : "c:@F@countVarUsage#&$@N@std@N@__1@C@vector>#*$@C@Node#$@N@std@N@__1@C@allocator>#S2_#&$@N@std@N@__1@C@vector>#I#$@N@std@N@__1@C@allocator>#I#"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.cpp",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 15,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.h",
+                "kind" : 8,
+                "line" : 1,
+                "name" : "NodeP",
+                "parent_name" : "",
+                "usr" : "c:Funs.h@T@NodeP"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Funs.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 15,
+                "name" : "printVec(std::vector<int> &)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@printVec#&$@N@std@N@__1@C@vector>#I#$@N@std@N@__1@C@allocator>#I#S"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 20,
+                "name" : "printVec(Vec &)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@printVec#&$@N@std@N@__1@C@vector>#d#$@N@std@N@__1@C@allocator>#d#S"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 25,
+                "name" : "printVec(Vec &, char *)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@printVec#&$@N@std@N@__1@C@vector>#d#$@N@std@N@__1@C@allocator>#d#*C#S"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 30,
+                "name" : "almat(long, long)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@almat#L#L#S"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 40,
+                "name" : "dealmat(double **)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@dealmat#**d#S"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 45,
+                "name" : "ialmat(long, long)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@ialmat#L#L#S"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 55,
+                "name" : "idealmat(int **)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@idealmat#**I#S"
+            },
+            {
+                "column" : 13,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 61,
+                "name" : "median(Vec)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@median#$@N@std@N@__1@C@vector>#d#$@N@std@N@__1@C@allocator>#d#S"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 73,
+                "name" : "sortedUnique(int, double *, Vec &)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@sortedUnique#I#*d#&$@N@std@N@__1@C@vector>#d#$@N@std@N@__1@C@allocator>#d#S"
+            },
+            {
+                "column" : 13,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 99,
+                "name" : "mean(const Vec &)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@mean#&1$@N@std@N@__1@C@vector>#d#$@N@std@N@__1@C@allocator>#d#S"
+            },
+            {
+                "column" : 13,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 103,
+                "name" : "sdev(const Vec &)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@sdev#&1$@N@std@N@__1@C@vector>#d#$@N@std@N@__1@C@allocator>#d#S"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 112,
+                "name" : "acov(Vec &, int, Vec &, bool)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@acov#&$@N@std@N@__1@C@vector>#d#$@N@std@N@__1@C@allocator>#d#I#S0_#b#S"
+            },
+            {
+                "column" : 13,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 137,
+                "name" : "tssd(Vec &, int, int)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@tssd#&$@N@std@N@__1@C@vector>#d#$@N@std@N@__1@C@allocator>#d#I#I#S"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 145,
+                "name" : "batchMeans(Vec &, int, Vec &)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@batchMeans#&$@N@std@N@__1@C@vector>#d#$@N@std@N@__1@C@allocator>#d#I#S0_#S"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+                "kind" : 7,
+                "line" : 161,
+                "name" : "Disc(Vec &)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@Disc#&$@N@std@N@__1@C@vector>#d#$@N@std@N@__1@C@allocator>#d#S"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.cpp",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 17,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.h",
+                "kind" : 8,
+                "line" : 20,
+                "name" : "dp",
+                "parent_name" : "",
+                "usr" : "c:Lib.h@T@dp"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.h",
+                "kind" : 8,
+                "line" : 21,
+                "name" : "ip",
+                "parent_name" : "",
+                "usr" : "c:Lib.h@T@ip"
+            },
+            {
+                "column" : 29,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.h",
+                "kind" : 8,
+                "line" : 22,
+                "name" : "Vec",
+                "parent_name" : "",
+                "usr" : "c:Lib.h@T@Vec"
+            },
+            {
+                "column" : 26,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.h",
+                "kind" : 8,
+                "line" : 23,
+                "name" : "IVec",
+                "parent_name" : "",
+                "usr" : "c:Lib.h@T@IVec"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.h",
+                "kind" : 2,
+                "line" : 25,
+                "name" : "Lib",
+                "parent_name" : "",
+                "usr" : "c:@C@Lib"
+            },
+            {
+                "column" : 23,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.h",
+                "kind" : 7,
+                "line" : 51,
+                "name" : "nextDouble",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@nextDouble#S"
+            },
+            {
+                "column" : 23,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.h",
+                "kind" : 7,
+                "line" : 52,
+                "name" : "nextGaussian",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@nextGaussian#S"
+            },
+            {
+                "column" : 23,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.h",
+                "kind" : 7,
+                "line" : 53,
+                "name" : "genChi2(int)",
+                "parent_name" : "Lib",
+                "usr" : "c:@C@Lib@F@genChi2#I#S"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Lib.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Likelihood.cpp",
+                "kind" : 6,
+                "line" : 12,
+                "name" : "LogLNode(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@LogLNode#*$@C@Node#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Likelihood.cpp",
+                "kind" : 6,
+                "line" : 35,
+                "name" : "LogLT(Node *, Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@LogLT#*$@C@Node#S0_#"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Likelihood.cpp",
+        "file_last_write" : 1462904853
+    },
+    {
+        "definitions" : [
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Likelihood.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 15,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.cpp",
+                "kind" : 8,
+                "line" : 11,
+                "name" : "voidP",
+                "parent_name" : "",
+                "usr" : "c:List.cpp@T@voidP"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.cpp",
+                "kind" : 2,
+                "line" : 20,
+                "name" : "Cell",
+                "parent_name" : "",
+                "usr" : "c:@C@Cell"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.cpp",
+                "kind" : 2,
+                "line" : 30,
+                "name" : "List",
+                "parent_name" : "",
+                "usr" : "c:@C@List"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.cpp",
+                "kind" : 7,
+                "line" : 50,
+                "name" : "deall",
+                "parent_name" : "List",
+                "usr" : "c:@C@List@F@deall#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.cpp",
+                "kind" : 6,
+                "line" : 66,
+                "name" : "CombineLists(List *, List *, List **)",
+                "parent_name" : "",
+                "usr" : "c:@F@CombineLists#*$@C@List#S0_#*S0_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.cpp",
+                "kind" : 6,
+                "line" : 104,
+                "name" : "PrintList(List *)",
+                "parent_name" : "",
+                "usr" : "c:@F@PrintList#*$@C@List#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.cpp",
+                "kind" : 6,
+                "line" : 126,
+                "name" : "DelCell(List *, Cell *)",
+                "parent_name" : "",
+                "usr" : "c:@F@DelCell#*$@C@List#*$@C@Cell#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.cpp",
+                "kind" : 6,
+                "line" : 146,
+                "name" : "AddCellToEnd(List *, void *)",
+                "parent_name" : "",
+                "usr" : "c:@F@AddCellToEnd#*$@C@List#*v#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.cpp",
+                "kind" : 6,
+                "line" : 168,
+                "name" : "AddCellToBeg(List *, void *)",
+                "parent_name" : "",
+                "usr" : "c:@F@AddCellToBeg#*$@C@List#*v#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.cpp",
+                "kind" : 6,
+                "line" : 190,
+                "name" : "AddCellAfter(List *, Cell *, void *)",
+                "parent_name" : "",
+                "usr" : "c:@F@AddCellAfter#*$@C@List#*$@C@Cell#*v#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.cpp",
+                "kind" : 6,
+                "line" : 211,
+                "name" : "AddCellBefore(List *, Cell *, void *)",
+                "parent_name" : "",
+                "usr" : "c:@F@AddCellBefore#*$@C@List#*$@C@Cell#*v#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.cpp",
+                "kind" : 6,
+                "line" : 232,
+                "name" : "ListToVector(List *, voidP **, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@ListToVector#*$@C@List#***v#*I#"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.cpp",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.h",
+                "kind" : 2,
+                "line" : 4,
+                "name" : "Cell",
+                "parent_name" : "",
+                "usr" : "c:@C@Cell"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.h",
+                "kind" : 2,
+                "line" : 13,
+                "name" : "List",
+                "parent_name" : "",
+                "usr" : "c:@C@List"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.h",
+                "kind" : 8,
+                "line" : 23,
+                "name" : "voidP",
+                "parent_name" : "",
+                "usr" : "c:List.h@T@voidP"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/List.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Mixdev.h",
+                "kind" : 2,
+                "line" : 7,
+                "name" : "Mixdev",
+                "parent_name" : "",
+                "usr" : "c:@C@Mixdev"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Mixdev.h",
+                "kind" : 7,
+                "line" : 15,
+                "name" : "updateLabels(int *, double *, double *, double *, double *, int, int)",
+                "parent_name" : "Mixdev",
+                "usr" : "c:@C@Mixdev@F@updateLabels#*I#*d#S1_#S1_#S1_#I#I#"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Mixdev.h",
+                "kind" : 7,
+                "line" : 41,
+                "name" : "tabCounts(int *, int *, int, int)",
+                "parent_name" : "Mixdev",
+                "usr" : "c:@C@Mixdev@F@tabCounts#*I#S0_#I#I#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Mixdev.h",
+                "kind" : 7,
+                "line" : 49,
+                "name" : "updateMix(double *, double *, int *, int *, int, int)",
+                "parent_name" : "Mixdev",
+                "usr" : "c:@C@Mixdev@F@updateMix#*d#S0_#*I#S1_#I#I#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Mixdev.h",
+                "kind" : 7,
+                "line" : 84,
+                "name" : "updateLocations(double *, double *, double *, int *, int *, double *, double, int, int)",
+                "parent_name" : "Mixdev",
+                "usr" : "c:@C@Mixdev@F@updateLocations#*d#S0_#S0_#*I#S1_#S0_#d#I#I#"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Mixdev.h",
+                "kind" : 7,
+                "line" : 114,
+                "name" : "getIndivLocations(double *, double *, int *, int, int)",
+                "parent_name" : "Mixdev",
+                "usr" : "c:@C@Mixdev@F@getIndivLocations#*d#S0_#*I#I#I#"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Mixdev.h",
+                "kind" : 7,
+                "line" : 129,
+                "name" : "updateSigma(int *, double *, double *, double *, double, int, int, int)",
+                "parent_name" : "Mixdev",
+                "usr" : "c:@C@Mixdev@F@updateSigma#*I#*d#S1_#S1_#d#I#I#I#"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Mixdev.h",
+        "file_last_write" : 1477861211
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.cpp",
+                "kind" : 7,
+                "line" : 11,
+                "name" : "drawPost",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@drawPost#"
+            },
+            {
+                "column" : 13,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.cpp",
+                "kind" : 7,
+                "line" : 15,
+                "name" : "getLogILik",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@getLogILik#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.cpp",
+                "kind" : 7,
+                "line" : 30,
+                "name" : "updatepost",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@updatepost#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.cpp",
+                "kind" : 7,
+                "line" : 50,
+                "name" : "setData(int, double **, double *, int *, double *)",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@setData#I#**d#S1_#*I#S1_#"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.cpp",
+                "kind" : 7,
+                "line" : 58,
+                "name" : "getParameterEstimate",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@getParameterEstimate#"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.cpp",
+                "kind" : 7,
+                "line" : 64,
+                "name" : "getFits(int, double **, int *)",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@getFits#I#**d#*I#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.cpp",
+                "kind" : 7,
+                "line" : 70,
+                "name" : "toScreen",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@toScreen#1"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.cpp",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.h",
+                "kind" : 2,
+                "line" : 7,
+                "name" : "MuS",
+                "parent_name" : "",
+                "usr" : "c:@C@MuS"
+            },
+            {
+                "column" : 9,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.h",
+                "kind" : 7,
+                "line" : 19,
+                "name" : "setMu(double)",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@setMu#d#"
+            },
+            {
+                "column" : 9,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.h",
+                "kind" : 7,
+                "line" : 20,
+                "name" : "setSigma(double)",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@setSigma#d#"
+            },
+            {
+                "column" : 9,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.h",
+                "kind" : 7,
+                "line" : 22,
+                "name" : "setPriorS(double)",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@setPriorS#d#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.h",
+                "kind" : 7,
+                "line" : 24,
+                "name" : "getMu",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@getMu#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.h",
+                "kind" : 7,
+                "line" : 25,
+                "name" : "getSigma2",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@getSigma2#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.h",
+                "kind" : 7,
+                "line" : 26,
+                "name" : "getA",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@getA#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.h",
+                "kind" : 7,
+                "line" : 28,
+                "name" : "getEstimateDim",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@getEstimateDim#1"
+            },
+            {
+                "column" : 9,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.h",
+                "kind" : 7,
+                "line" : 37,
+                "name" : "clearData",
+                "parent_name" : "MuS",
+                "usr" : "c:@C@MuS@F@clearData#"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/MuS.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 17,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 8,
+                "line" : 28,
+                "name" : "dp",
+                "parent_name" : "",
+                "usr" : "c:Lib.h@T@dp"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 30,
+                "name" : "SplitVal",
+                "parent_name" : "Rule",
+                "usr" : "c:@C@Rule@F@SplitVal#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 68,
+                "name" : "deall",
+                "parent_name" : "Rule",
+                "usr" : "c:@C@Rule@F@deall#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 82,
+                "name" : "Right(double *)",
+                "parent_name" : "Rule",
+                "usr" : "c:@C@Rule@F@Right#*d#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 6,
+                "line" : 113,
+                "name" : "CopyRule(Rule *, Rule *)",
+                "parent_name" : "",
+                "usr" : "c:@F@CopyRule#*$@C@Rule#S0_#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 134,
+                "name" : "CopyTree(Node *)",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@CopyTree#*$@C@Node#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 163,
+                "name" : "deall",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@deall#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 193,
+                "name" : "ClearData",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@ClearData#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 225,
+                "name" : "PrintTree",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@PrintTree#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 263,
+                "name" : "PrintTree(FILE *)",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@PrintTree#*$@S@_IO_FILE#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 302,
+                "name" : "PrintBernTree(FILE *)",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@PrintBernTree#*$@S@_IO_FILE#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 341,
+                "name" : "NumBotNodes",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@NumBotNodes#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 351,
+                "name" : "DepthBelow",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@DepthBelow#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 358,
+                "name" : "NumNogNodes",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@NumNogNodes#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 365,
+                "name" : "GetBotList(List **)",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@GetBotList#**$@C@List#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 386,
+                "name" : "GetNogList(List **)",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@GetNogList#**$@C@List#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 415,
+                "name" : "GetNotBotList(List **)",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@GetNotBotList#**$@C@List#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 439,
+                "name" : "GetSwapsList(List **)",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@GetSwapsList#**$@C@List#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 461,
+                "name" : "FindNode(double *, Node **)",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@FindNode#*d#**$@C@Node#"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 480,
+                "name" : "GetBotArray",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@GetBotArray#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 512,
+                "name" : "GetIndPart(int, double **)",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@GetIndPart#I#**d#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 529,
+                "name" : "GetFits(void *, int, double **, double **, double *, int, double **, double **, double *)",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@GetFits#*v#I#**d#S1_#S2_#I#S1_#S1_#S2_#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 596,
+                "name" : "currentFits(MuS *, int, double **, double *, int, double **, double *, double **)",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@currentFits#*$@C@MuS#I#**d#S3_#I#S2_#S3_#S2_#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 637,
+                "name" : "GetEstimates(void *, int, double **, double **, double *, double *)",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@GetEstimates#*v#I#**d#S1_#S2_#S2_#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 678,
+                "name" : "SetData",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@SetData#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 7,
+                "line" : 684,
+                "name" : "SetData(int)",
+                "parent_name" : "Node",
+                "usr" : "c:@C@Node@F@SetData#I#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 6,
+                "line" : 739,
+                "name" : "Depth(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@Depth#*$@C@Node#"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 6,
+                "line" : 750,
+                "name" : "Brother(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@Brother#*$@C@Node#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 6,
+                "line" : 767,
+                "name" : "AddChildsInd(Node *, int, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@AddChildsInd#*$@C@Node#I#I#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 6,
+                "line" : 818,
+                "name" : "AddChildsVal(Node *, int, double)",
+                "parent_name" : "",
+                "usr" : "c:@F@AddChildsVal#*$@C@Node#I#d#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 6,
+                "line" : 843,
+                "name" : "getVarUsage(Node *, int, int, std::vector<VarUsage> &)",
+                "parent_name" : "",
+                "usr" : "c:@F@getVarUsage#*$@C@Node#I#I#&$@N@std@N@__1@C@vector>#$@C@VarUsage#$@N@std@N@__1@C@allocator>#S4_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+                "kind" : 6,
+                "line" : 855,
+                "name" : "printVarUsageVector(const std::vector<VarUsage> &)",
+                "parent_name" : "",
+                "usr" : "c:@F@printVarUsageVector#&1$@N@std@N@__1@C@vector>#$@C@VarUsage#$@N@std@N@__1@C@allocator>#S2_#"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.cpp",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 15,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.h",
+                "kind" : 8,
+                "line" : 8,
+                "name" : "voidP",
+                "parent_name" : "",
+                "usr" : "c:List.h@T@voidP"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.h",
+                "kind" : 2,
+                "line" : 10,
+                "name" : "Rule",
+                "parent_name" : "",
+                "usr" : "c:@C@Rule"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.h",
+                "kind" : 2,
+                "line" : 30,
+                "name" : "Node",
+                "parent_name" : "",
+                "usr" : "c:@C@Node"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.h",
+                "kind" : 2,
+                "line" : 89,
+                "name" : "VarUsage",
+                "parent_name" : "",
+                "usr" : "c:@C@VarUsage"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Node.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 15,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.cpp",
+                "kind" : 8,
+                "line" : 15,
+                "name" : "NodeP",
+                "parent_name" : "",
+                "usr" : "c:Funs.h@T@NodeP"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.cpp",
+                "kind" : 6,
+                "line" : 18,
+                "name" : "SumGoodVar(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@SumGoodVar#*$@C@Node#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.cpp",
+                "kind" : 6,
+                "line" : 27,
+                "name" : "GetSplitInterval(int *, int *, Node *, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@GetSplitInterval#*I#S0_#*$@C@Node#I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.cpp",
+                "kind" : 6,
+                "line" : 70,
+                "name" : "GetSetCats(Node *, int, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@GetSetCats#*$@C@Node#I#*I#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.cpp",
+                "kind" : 6,
+                "line" : 101,
+                "name" : "PGrow(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@PGrow#*$@C@Node#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.cpp",
+                "kind" : 6,
+                "line" : 128,
+                "name" : "SpawnChildren(Node *, int, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@SpawnChildren#*$@C@Node#I#I#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.cpp",
+                "kind" : 6,
+                "line" : 166,
+                "name" : "GetSkipBadInd(int, int *, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@GetSkipBadInd#I#*I#I#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.cpp",
+                "kind" : 6,
+                "line" : 181,
+                "name" : "DrPriVar(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@DrPriVar#*$@C@Node#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.cpp",
+                "kind" : 6,
+                "line" : 195,
+                "name" : "DrPriRule(int, Node *, int *, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@DrPriRule#I#*$@C@Node#*I#S2_#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.cpp",
+                "kind" : 6,
+                "line" : 285,
+                "name" : "MaxDepth(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@MaxDepth#*$@C@Node#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.cpp",
+                "kind" : 6,
+                "line" : 306,
+                "name" : "DrawPrior(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@DrawPrior#*$@C@Node#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.cpp",
+                "kind" : 6,
+                "line" : 324,
+                "name" : "LogPriT(Node *)",
+                "parent_name" : "",
+                "usr" : "c:@F@LogPriT#*$@C@Node#"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.cpp",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 15,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.h",
+                "kind" : 8,
+                "line" : 1,
+                "name" : "NodeP",
+                "parent_name" : "",
+                "usr" : "c:Prior.h@T@NodeP"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Prior.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 17,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 8,
+                "line" : 16,
+                "name" : "dp",
+                "parent_name" : "",
+                "usr" : "c:Rlob.h@T@dp"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 8,
+                "line" : 17,
+                "name" : "ip",
+                "parent_name" : "",
+                "usr" : "c:Rlob.h@T@ip"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 19,
+                "name" : "almat(long, long)",
+                "parent_name" : "",
+                "usr" : "c:@F@almat#L#L#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 30,
+                "name" : "dealmat(double **)",
+                "parent_name" : "",
+                "usr" : "c:@F@dealmat#**d#"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 36,
+                "name" : "ialmat(long, long)",
+                "parent_name" : "",
+                "usr" : "c:@F@ialmat#L#L#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 47,
+                "name" : "idealmat(int **)",
+                "parent_name" : "",
+                "usr" : "c:@F@idealmat#**I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 54,
+                "name" : "print_mat(long, double **)",
+                "parent_name" : "",
+                "usr" : "c:@F@print_mat#L#**d#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 67,
+                "name" : "print_mat(FILE *, long, double **)",
+                "parent_name" : "",
+                "usr" : "c:@F@print_mat#*$@S@_IO_FILE#L#**d#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 80,
+                "name" : "print_mat(long, long, double **)",
+                "parent_name" : "",
+                "usr" : "c:@F@print_mat#L#L#**d#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 93,
+                "name" : "print_mat(FILE *, long, long, double **)",
+                "parent_name" : "",
+                "usr" : "c:@F@print_mat#*$@S@_IO_FILE#L#L#**d#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 106,
+                "name" : "print_vec(long, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@print_vec#L#*d#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 111,
+                "name" : "print_vec(FILE *, long, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@print_vec#*$@S@_IO_FILE#L#*d#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 118,
+                "name" : "Bern(double)",
+                "parent_name" : "",
+                "usr" : "c:@F@Bern#d#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 128,
+                "name" : "Disc(double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@Disc#*d#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 143,
+                "name" : "min(double, double)",
+                "parent_name" : "",
+                "usr" : "c:@F@min#d#d#"
+            },
+            {
+                "column" : 9,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 152,
+                "name" : "max(double, double)",
+                "parent_name" : "",
+                "usr" : "c:@F@max#d#d#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 161,
+                "name" : "myDoubleAbs(double)",
+                "parent_name" : "",
+                "usr" : "c:@F@myDoubleAbs#d#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 167,
+                "name" : "indtd(int, int, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@indtd#I#I#*I#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 180,
+                "name" : "dtind(int, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@dtind#I#*I#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 188,
+                "name" : "ISum(int, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@ISum#I#*I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 197,
+                "name" : "mul_ltl(int, double **, double **)",
+                "parent_name" : "",
+                "usr" : "c:@F@mul_ltl#I#**d#S0_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 212,
+                "name" : "choldc(double **, int, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@choldc#**d#I#S1_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 230,
+                "name" : "sym_chol_inv(int, double **, double **)",
+                "parent_name" : "",
+                "usr" : "c:@F@sym_chol_inv#I#**d#S0_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 268,
+                "name" : "sym_inv_det(int, double **, double **)",
+                "parent_name" : "",
+                "usr" : "c:@F@sym_inv_det#I#**d#S0_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 288,
+                "name" : "solve_rtxb(int, double **, double *, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@solve_rtxb#I#**d#S1_#S1_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 308,
+                "name" : "solve_rxb(int, double **, double *, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@solve_rxb#I#**d#S1_#S1_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 330,
+                "name" : "gammln(double)",
+                "parent_name" : "",
+                "usr" : "c:@F@gammln#d#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 346,
+                "name" : "compare(const void *, const void *)",
+                "parent_name" : "",
+                "usr" : "c:@F@compare#*1v#S0_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+                "kind" : 6,
+                "line" : 363,
+                "name" : "stanAndSortForCart(int, int, double **, double **, int *, double **, double *, double *)",
+                "parent_name" : "",
+                "usr" : "c:@F@stanAndSortForCart#I#I#**d#S0_#*I#S0_#S1_#S1_#"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.cpp",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 17,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.h",
+                "kind" : 8,
+                "line" : 17,
+                "name" : "dp",
+                "parent_name" : "",
+                "usr" : "c:Rlob.h@T@dp"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.h",
+                "kind" : 8,
+                "line" : 18,
+                "name" : "ip",
+                "parent_name" : "",
+                "usr" : "c:Rlob.h@T@ip"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Rlob.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Sdev.h",
+                "kind" : 2,
+                "line" : 6,
+                "name" : "Sdev",
+                "parent_name" : "",
+                "usr" : "c:@C@Sdev"
+            },
+            {
+                "column" : 9,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Sdev.h",
+                "kind" : 7,
+                "line" : 14,
+                "name" : "getS",
+                "parent_name" : "Sdev",
+                "usr" : "c:@C@Sdev@F@getS#"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Sdev.h",
+                "kind" : 7,
+                "line" : 15,
+                "name" : "setS(double)",
+                "parent_name" : "Sdev",
+                "usr" : "c:@C@Sdev@F@setS#d#"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Sdev.h",
+                "kind" : 7,
+                "line" : 17,
+                "name" : "setPrior(int, double)",
+                "parent_name" : "Sdev",
+                "usr" : "c:@C@Sdev@F@setPrior#I#d#"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Sdev.h",
+                "kind" : 7,
+                "line" : 18,
+                "name" : "setData(int, double *)",
+                "parent_name" : "Sdev",
+                "usr" : "c:@C@Sdev@F@setData#I#*d#"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Sdev.h",
+                "kind" : 7,
+                "line" : 19,
+                "name" : "drawPost",
+                "parent_name" : "Sdev",
+                "usr" : "c:@C@Sdev@F@drawPost#"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Sdev.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Swap.cpp",
+                "kind" : 6,
+                "line" : 28,
+                "name" : "CheckCatRule(Node *, int, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@CheckCatRule#*$@C@Node#I#*I#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Swap.cpp",
+                "kind" : 6,
+                "line" : 80,
+                "name" : "CheckOrdRule(Node *, int, int, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@CheckOrdRule#*$@C@Node#I#I#I#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Swap.cpp",
+                "kind" : 6,
+                "line" : 115,
+                "name" : "CheckRule(Node *, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@CheckRule#*$@C@Node#I#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Swap.cpp",
+                "kind" : 6,
+                "line" : 129,
+                "name" : "AreRulesEqual(Rule *, Rule *)",
+                "parent_name" : "",
+                "usr" : "c:@F@AreRulesEqual#*$@C@Rule#S0_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/Swap.cpp",
+                "kind" : 6,
+                "line" : 149,
+                "name" : "SwapRule(Node *, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@SwapRule#*$@C@Node#*I#"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Swap.cpp",
+        "file_last_write" : 1462904595
+    },
+    {
+        "definitions" : [
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/Swap.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/global.h",
+        "file_last_write" : 1456184785
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 17,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/mbart.cpp",
+                "kind" : 8,
+                "line" : 36,
+                "name" : "dp",
+                "parent_name" : "",
+                "usr" : "c:Lib.h@T@dp"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/mbart.cpp",
+                "kind" : 8,
+                "line" : 37,
+                "name" : "ip",
+                "parent_name" : "",
+                "usr" : "c:Lib.h@T@ip"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/mbart.cpp",
+                "kind" : 8,
+                "line" : 38,
+                "name" : "NodeP",
+                "parent_name" : "",
+                "usr" : "c:Funs.h@T@NodeP"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/mbart.cpp",
+                "kind" : 8,
+                "line" : 39,
+                "name" : "voidP",
+                "parent_name" : "",
+                "usr" : "c:List.h@T@voidP"
+            },
+            {
+                "column" : 23,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/mbart.cpp",
+                "kind" : 8,
+                "line" : 40,
+                "name" : "EndNodeModelP",
+                "parent_name" : "",
+                "usr" : "c:mbart.cpp@T@EndNodeModelP"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/mbart.cpp",
+        "file_last_write" : 1493658032
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/truncNormImpute.cpp",
+                "kind" : 6,
+                "line" : 9,
+                "name" : "truncNormImpute(double *, double *, int *, double *, double *, double *, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@truncNormImpute#*d#S0_#*I#S0_#S0_#S0_#I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/nhenders/MyRpackages/AFTrees/src/truncNormImpute.cpp",
+                "kind" : 6,
+                "line" : 29,
+                "name" : "truncNormImpute_SP(double *, double *, int *, double *, double, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@truncNormImpute_SP#*d#S0_#*I#S0_#d#I#"
+            }
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/truncNormImpute.cpp",
+        "file_last_write" : 1463348069
+    },
+    {
+        "definitions" : [
+        ],
+        "file" : "/home/nhenders/MyRpackages/AFTrees/src/truncNormImpute.h",
+        "file_last_write" : 1463348083
+    }
+]

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "useDynLib(\"AFTrees\")\n\nexport(AFTrees,pdbart,pd2bart,plot.bart,makeind,IndivAFT,IndivAFTNew, IndivAFTSeparate, SurvivalProb,ConcIndex, cv.AFTree, cv.IndivAFT)\n\nimportFrom(nnet,class.ind)\nimportFrom(\"graphics\", \"abline\", \"contour\", \"image\", \"lines\", \"par\",\"plot\", \"title\",\"points\")\nimportFrom(\"stats\", \"lm\", \"pnorm\", \"quantile\", \"dnorm\", \"integrate\", \"median\", \"uniroot\")\nimportFrom(\"utils\", \"combn\")\nimportFrom(\"survival\", \"survreg\", \"Surv\", \"survfit\")\n\nS3method(plot, bart)\nS3method(plot, pdbart)\nS3method(plot, pd2bart)\nS3method(plot, indivaft)\n",
+    "created" : 1523339133066.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2709929191",
+    "id" : "49105927",
+    "lastKnownWriteTime" : 1523383256,
+    "last_content_update" : 1523383256,
+    "path" : "~/MyRpackages/AFTrees/NAMESPACE",
+    "project_path" : "NAMESPACE",
+    "properties" : {
+    },
+    "relative_order" : 40,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_namespace"
+}

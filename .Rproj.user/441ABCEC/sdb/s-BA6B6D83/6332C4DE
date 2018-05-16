@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Package: AFTrees\nType: Package\nTitle: Accelerated Failure Trees\nVersion: 0.6\nDate: 2018-3-1\nAuthor: Nicholas Henderson\nMaintainer: Nicholas Henderson <nhender5@jhmi.edu>\nImports: nnet, survival\nDescription: This package fits AFT models with an additive tree model for the regression function and a DP mixture for the error distribution.\nLicense: GPL-2\nLazyData: TRUE\n",
+    "created" : 1505751499697.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "108349842",
+    "id" : "6332C4DE",
+    "lastKnownWriteTime" : 1520048650,
+    "last_content_update" : 1520048650,
+    "path" : "~/MyRpackages/AFTrees/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 28,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "dcf"
+}

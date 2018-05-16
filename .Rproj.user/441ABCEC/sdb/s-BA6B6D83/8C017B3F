@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\nset.seed(53718)\n\n### AFT example, with Normal-mixture error distribution\nn <- 500\nage <- runif(n)\nage <- sort(age)\nmuvec <- muvec_trt <- rep(0, n)\nfor(k in 1:n) {\n  muvec[k] <- 1/2 + pnorm(5*(age[k] - .5))\n  muvec_trt[k] <- .35 + muvec[k]\n}\ncens_times <- runif(2*n, min=1, max=3)\n\nW1 <- W2 <- rep(0, n)\nzz <- sample(1:2, size=n, replace=TRUE)\nn1 <- sum(zz==1)\nn2 <- sum(zz==2)\nW1[zz==1] <- rnorm(n1, mean=-1,sd=.5)\nW1[zz==2] <- rnorm(n2, mean=1,sd=.5)\nzz <- sample(1:2, size=n, replace=TRUE)\nn1 <- sum(zz==1)\nn2 <- sum(zz==2)\nW2[zz==1] <- rnorm(n1, mean=-1,sd=.5)\nW2[zz==2] <- rnorm(n2, mean=1,sd=.5)\n\n\n#### generate log-survival times\na0 <- muvec + W1\na1 <- muvec_trt + W2\nyy <- c(a0, a1)\nstatus <- as.numeric(yy <= cens_times)\n\n\nyy[status==0] <- cens_times[status==0]\nTrt <- c(rep(0,n), rep(1,n))\nXX <- cbind(rep(age,2), Trt)\n\nsystem.time(aftFit <- AFTrees(XX, exp(yy),status=status,ndpost=200,nskip=500,printevery=100))\n\n\n\n\n",
+    "created" : 1488040628030.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1475909147",
+    "id" : "8C017B3F",
+    "lastKnownWriteTime" : 80,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled29"
+    },
+    "relative_order" : 105,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

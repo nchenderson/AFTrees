@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\nlibrary(AFTrees)\nlibrary(numDeriv)\n\nload(\"~/personalized/Data/solvd.RData\")\nsource(file=\"~/personalized/aft_code/HistogramEstimate.R\")\n\n\n\n\ndata(solvd_pt)\n\n\nform <- ttodthorchfhosp ~ study + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk + gender - 1\nXX <- model.matrix(form, solvd)\nstatus <- solvd$deathorchfhosp\nyy <- solvd$ttodthorchfhosp\nTrts <- as.numeric(solvd$trt == \"treatment\")\n\n\n\n#system.time(obj <- IndivAFT(x.train=XX,y.train=yy,status=status,Trt=Trts, ndpost=1000,nskip=1000,printevery=100))\n## about 170 samples per minute\n\n###################################################################################\n##  Covariates used in the analysis\n#1. study - study indicator\n#2. age - age\n#3. gender - sex\n#4. weightkg - weight\n#4. smoke - smoking history\n#5. diabet - diabetic status\n#6. lvef - ejection fraction\n#7. himi - history of myocardial infarction\n#8. nyha - New York health association score\n#9. depedema - dependent epedema\n#10. crackles\n#11. anydiurbl - any diuretic or ...\n#12. avsys - systolic blood pressure\n#13. avdia -\n#14. beat - beats per minute ...\n#15. creatinine -\n#16. sodium -\n#17. copd - chronic pulmonary disease?\n#18. histk\n\n\nA <- cbind(c(1,2,3,4),c(5,6,7,8))\n\nind <- c(TRUE, FALSE, TRUE, FALSE)\ne <- rep(0, 4)\nb <- A[ind,1]\nd <- A[!ind,1]\n\ne[ind] <- b\ne[!ind] <- d\n\ne\n\n\n\n",
+    "created" : 1521406991563.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1139131572",
+    "id" : "F15D321B",
+    "lastKnownWriteTime" : 1521494548,
+    "last_content_update" : 1521494548415,
+    "path" : "~/personalized/FinPaperGraphs/FitSolvdT.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled37"
+    },
+    "relative_order" : 30,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\nnn <- 20\ntau <- 201\nuu <- runif(nn)\nbet0 <- seq(-5, 5, length.out=tau)\nbet1 <- numeric(tau)\nbet1[bet0 < 0] <- -bet0[bet0 < 0]/max(uu)\nbet1[bet0 >=0 ] <- -bet0[bet0 >= 0]/min(uu)\nzero_ind <- which(bet0 == 0)\n\nplot(bet0, bet1, type=\"n\",xlim=c(-4,4),ylim=c(-70,10), las=1)\n#lines(bet0, bet1)\npolygon(c(bet0[1],bet0[zero_ind],bet0[tau],bet0[1]),c(bet1[1],bet1[zero_ind],bet1[tau],bet1[tau]), col=\"grey\",lwd=2)\n\n### check that the constraints are correct\n\na = bet0[1] + bet1[1]*uu\n\nsummary(a)\n\n\n\n\n",
+    "created" : 1486498411970.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1287606928",
+    "id" : "C7ADE967",
+    "lastKnownWriteTime" : 119850112,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled26"
+    },
+    "relative_order" : 94,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

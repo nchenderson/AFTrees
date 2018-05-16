@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\nplot(TrueTheta, theta.np[1,])\nabline(0,1)\n\n\nplot(1:n,TrueTheta[order(TrueTheta)])\npoints(1:n, upper.ci[order(TrueTheta)], col=\"red\")\npoints(1:n, lower.ci[order(TrueTheta)], col=\"blue\")\npoints(1:n, post.means[order(TrueTheta)], col=\"green\")\n\n\nind <- TrueTheta > .2 & TrueTheta < .8\nmean((TrueTheta[ind] > lower.ci[ind]) & (TrueTheta[ind] <= upper.ci[ind]))\n\n\n",
+    "created" : 1524061816172.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1029563861",
+    "id" : "B880B610",
+    "lastKnownWriteTime" : 3760349993931976298,
+    "last_content_update" : 1524064496487,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled41"
+    },
+    "relative_order" : 41,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

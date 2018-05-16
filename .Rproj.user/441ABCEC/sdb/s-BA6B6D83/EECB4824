@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\nA <- cbind(c(1,2,3), c(4,5,6))\nb <- c(1,2)\n\n\nt(t(A)*b)\n\ndd <- c(1,2,3)\nouter(b, dd, FUN=\"+\")\n\nBuildBetaMat <- function(xx, nn, hsq, tau_vec) {\n  ### first compute transpose of what we want\n  A1 <- outer( tau_vec/hsq, xx + 1, FUN=\"+\")\n  A2 <- outer((1 - tau_vec)/hsq, nn - xx + 1, FUN=\"+\")\n  \n  tmp1 <- lgamma(A1) + lgamma(A2) - lgamma(tau_vec/hsq + 1) - lgamma((1 - tau_vec)/hsq + 1)\n  tmp2 <- lchoose(nn, xx) + lgamma(1/hsq + 2) - lgamma(nn + 1/hsq + 2)   \n  ans <- exp(t(tmp1) + tmp2)\n  return(ans)\n}\n\nLongBetaMat <- function(xx, nn, hsq, tau_vec) {\n  nobs <- length(xx)\n  pp <- length(tau_vec)\n  A <- matrix(0.0, nrow=nobs,ncol=pp)\n  \n  for(i in 1:nobs) {\n    for(j in 1:pp) {\n      tmp1 <- lgamma(xx[i] + tau_vec[j]/hsq + 1) + lgamma(nn[i] - xx[i] + (1 - tau_vec[j])/hsq + 1)\n      tmp2 <- lgamma(tau_vec[j]/hsq + 1) + lgamma((1 - tau_vec[j])/hsq + 1)\n      tmp3 <- lchoose(nn[i], xx[i]) + lgamma(1/hsq + 2)\n      tmp4 <- lgamma(nn[i] + 1/hsq + 2)\n      A[i,j] <- exp(tmp1 - tmp2 + tmp3 - tmp4)\n    }\n  }\n  return(A)\n}\n\nxx <- c(0, 2, 3, 2, 7)\nnn <- c(2, 5, 5, 6, 11)\nhsq <- .1\ntau_vec <- c(.1, .3, .5, .7)\n\nA <- BuildBetaMat(xx, nn , hsq, tau_vec)\nB <- LongBetaMat(xx, nn, hsq, tau_vec)\n\n\nReturnDensity <- function(tgrid, est_pi, tau_vec, hsq) {\n  ### The matrix K has K[i,j] = dbeta(tgrid[i], shape1=tau_vec[j]/hsq + 1, shape2=(1 - tau_vec[j])/hsq + 1)\n  \n  ngrid <- length(tgrid)\n  pp <- length(est_pi)\n  Kmat <- matrix(0.0, nrow=ngrid, ncol=pp)\n  for(i in 1:ngrid) {\n    Kmat[i,] <- dbeta(tgrid[i], shape1=tau_vec/hsq + 1, shape2=(1 - tau_vec)/hsq + 1)\n  }\n  ff <- Kmat%*%est_pi\n  \n  fhat <- approxfun(tgrid, ff)   \n  return(fhat)\n}\n\ntgrid <- 1:100/101\nest_pi <- c(.5,.5,rep(0, 8))\ntau_vec <- 1:10/11\nhsq <- .2\n\nff <- ReturnDensity(tgrid, est_pi, tau_vec, hsq) \n  \nplot(ff)\nlines(tgrid, dbeta(tgrid, shape1=tau_vec[1]/hsq + 1, shape=(1 - tau_vec[1])/hsq + 1), col=\"red\")\n\n\n\n\n\n\n\n\n\n\n\n",
+    "created" : 1488121409626.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2068461305",
+    "id" : "EECB4824",
+    "lastKnownWriteTime" : 218387448,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled30"
+    },
+    "relative_order" : 106,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

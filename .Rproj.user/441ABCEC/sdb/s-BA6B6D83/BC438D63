@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\nlibrary(AFTrees)\n\nsource(file=\"~/personalized/aft_code/prophaz_tests/surv_functions.R\")\n\n#source(file=\"~/personalized/aft_code/ErrorParametricGibbs.R\")\n#source(file=\"~/personalized/aft_code/RegressionParametricGibbs_Constrained.R\")\n#source(file=\"~/personalized/aft_code/ParametricGibbs.R\")\n#source(file=\"~/personalized/aft_code/NonParametricGibbs_Constrained.R\")\n#sourceCpp(file=\"~/personalized/aft_code/survival_curves_base.cpp\")\n\n\nset.seed(48912)\n\nmufn_trt <- function(x) {\n  #  ans <- 1 - 2.5*pnorm(6*(x - .5))\n  ans <- 1.6 - 2.5*pnorm(4*(x - .5))\n  \n  return(ans)\n}\nmufn <- function(x) {\n  ans <- 2.5*pnorm(10*(x - .3)) - 1\n  #ans <- 1/2 + (10*(x - 1/2))/(10 + 1*abs(x-1/2))\n  return(ans)\n}\n\n\nn <- 1000\nlam <- 1\nage <- runif(n)\nage <- sort(age)\nTrt <- sample(0:1, size=n, replace=TRUE)\nXX <- matrix(age, ncol=1)\ngg= mufn(age) + Trt*(mufn_trt(age) - mufn(age))\n#gg_alt <- mufn_trt(age) + Trt*(mufn(age) - mufn_trt(age))\n\na <- MeanLogSurvPW(gg, lambda=lam) ## this needs some work\nYY <- SimulatePW(gg, lambda=lam)\n\nplot(age[Trt==1], log(YY[Trt==1]),ylim=c(-4,4),type=\"n\")\n#lines(age[Trt==1], log(YY[Trt==1]) )\nlines(age[Trt==1], a[Trt==1], col=\"red\", lwd=2)\nlines(age[Trt==0], a[Trt==0],col=\"blue\", lwd=2)\npoints(age[Trt==0], log(YY[Trt==0]),col=\"blue\")\npoints(age[Trt==1], log(YY[Trt==1]),col=\"red\")\n\n\n\n\n",
+    "created" : 1465697159284.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "152916929",
+    "id" : "BC438D63",
+    "lastKnownWriteTime" : 1465676017,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled16"
+    },
+    "relative_order" : 27,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

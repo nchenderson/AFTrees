@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "rt3mix <- function(n, dfs, mus, mixs, sds) {\n    labels <- sample(1:3, size=n, replace=TRUE, prob=mixs)\n    n1 <- sum(labels==1)\n    n2 <- sum(labels==2)\n    n3 <- sum(labels==3)\n    WW <- rep(0,n)\n    if(n1 > 0) {\n        WW[labels==1] <- mus[1] + sds[1]*rt(n1, df=dfs)\n    }\n    if(n2 > 0) {\n      WW[labels==2] <- mus[2] + sds[2]*rt(n2, df=dfs)\n    }\n    if(n1 > 0) {\n      WW[labels==3] <- mus[3] + sds[3]*rt(n3, df=dfs)\n    }\n    return(WW)\n}\n\nx <- rt3mix(1000, dfs=4, mus=c(0,-1/2,1/2), mixs=c(.6,.2,.2),sds=c(.1,.1,.1))\nhist(x, breaks=30)\nsd(x)\n",
+    "created" : 1463412350496.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1646111282",
+    "id" : "ACEC0033",
+    "lastKnownWriteTime" : 80,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled9"
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

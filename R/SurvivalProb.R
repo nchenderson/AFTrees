@@ -1,0 +1,37 @@
+SurvivalProb <- function(obj, time.point) {
+     ### First check that all elements of time.point > 0
+     ### Computation of mean survival curves.
+     
+     
+     nsubjects <- ncol(obj$yhat.train)
+     ### fitted.values is nsamp x nsubjects
+     nsamples <- nrow(obj$locations)
+     
+     if(length(time.point) > 1) {
+         ngrid <- length(time.point)
+         SS <- matrix(0, nrow=nsubjects, ncol=ngrid) 
+     
+         ### TauMat should be nsamples x nclusters
+         for(i in 1:nsubjects) {
+             for(k in 1:ngrid) {
+                 Amat <- (log(time.point[k]) - obj$locations - obj$yhat.train[,i])/obj$sigma
+                 SS[i,k] <- sum(pnorm(Amat, lower.tail=FALSE)*obj$mix.prop)/nsamples
+             }
+         }
+     }
+     else {
+         SS <- rep(0, nsubjects)
+         for(i in 1:nsubjects) {
+              Amat <- (log(time.point) - obj$locations - obj$yhat.train[,i])/obj$sigma
+              SS[i] <- sum(pnorm(Amat, lower.tail=FALSE)*obj$mix.prop)/nsamples
+         }
+     }
+     ans <- list()
+     class(ans) <- "survcurves"
+     ans$Surv <- SS
+     ans$time.point <- time.point
+     return(ans)
+}
+
+
+

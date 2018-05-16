@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "##simulate data (example from Friedman MARS paper)\nf = function(x){\n  10*sin(pi*x[,1]*x[,2]) + 20*(x[,3]-.5)^2+10*x[,4]+5*x[,5]\n}\nsigma = 1.0  #y = f(x) + sigma*z , z~N(0,1)\nn = 100      #number of observations\nset.seed(99)\nx=matrix(runif(n*10),n,10) #10 variables, only first 5 matter\nEy = f(x)\ny=Ey+sigma*rnorm(n)\nlmFit = lm(y~.,data.frame(x,y)) #compare lm fit to BART later\n##run BART\nset.seed(99)\nbartFit = bart(x,y,ndpost=200) \n\n\n\n",
+    "created" : 1460146613054.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3285085400",
+    "id" : "3C9B7FDE",
+    "lastKnownWriteTime" : 4,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

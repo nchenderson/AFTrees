@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\ndinvchisq <- function(x, nu) {\n  ans <- (nu/2)*log(nu/2) - lgamma(nu/2) - (nu/2 + 1)*log(x) - nu/(2*x)\n  return(exp(ans))\n}\n\npchiconv <- function(p, nu) {\n  ### CDF for the random variable defined as\n  ###  nu/X + Z  where X is chi_sq with nu degrees of freedom and Z ~ N(1,1) \n  ff <- function(v,x) {\n      ss <- 1/sqrt(2*(v[2]+1))\n      ans <- pnorm(x - v[1], mean=1,sd=ss)*dinvchisq(v[1], nu=nu)*dgamma(v[2], shape=2, rate=.1)\n      return(ans)\n  }\n  tau <- length(p)\n  a <- rep(0, tau)\n  for(k in 1:tau) {\n    #a[k] <- integrate(ff, x=p[k], lower=0, upper=Inf)$value\n    a[k] <- adaptIntegrate(ff, lowerLimit=c(0,0), upperLimit=c(40,600), tol=1e-8, x=p[k])$integral\n  }\n  return(a)\n}\n\nqchiconv <- function(q, nu) {\n  gg <- function(x) {\n    pchiconv(x, nu=nu) - q\n  }\n  a <- uniroot(gg, interval=c(0,100))\n  return(a$root)\n}\n\nqchiconv(.8, 3)\n\n### 6.142334  - for 0.9\n### 27.12703  - for 0.99\n\npchiconv(89.1, 3)\n\ntgrid <- seq(.001, 15, length.out=200)\nplot(tgrid, dinvchisq(tgrid, 3))\n\nn <- 100000\nMM <- rgamma(n, shape=2, rate=.1)\nss <- sqrt(1/(2*(MM + 1)))\nxx <- 3/rchisq(n, df=3) + rnorm(n, mean=1, sd=ss)\nquantile(xx, probs=.99)\n\n\n\n\n\n\n\n",
+    "created" : 1477875709341.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1284443162",
+    "id" : "A365213C",
+    "lastKnownWriteTime" : 0,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled23"
+    },
+    "relative_order" : 56,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

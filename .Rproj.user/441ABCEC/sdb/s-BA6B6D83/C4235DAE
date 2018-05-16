@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\n\nComputeRankMatrix <- function(Xlist) {\n    nmodels <- length(Xlist)\n    dist_mat <- RankMat <- matrix(0.0, nrow=nmodels, ncol=nmodels)\n    for(i in 1:(nmodels-1)) {\n        for(j in (i+1):nmodels) {\n            dist_mat[i,j] <- mean((Xlist[[i]] - Xlist[[j]])^2)\n            dist_mat[j,i] <- dist_mat[i,j]\n        }\n    }\n    print(dist_mat)\n    for(k in 1:nmodels) {\n        RankMat[k,] <- rank(dist_mat[k,]) - 1\n    }\n    return(RankMat)\n}\n\nXlist <- list()\nXlist[[1]] <- matrix(rnorm(8),4,4)\nXlist[[2]] <- matrix(rnorm(8), 4,4)\nXlist[[3]] <- matrix(rnorm(8),4,4)\nXlist[[4] ] <- matrix(rnorm(8), 4,4)\nRR <- ComputeRankMatrix(Xlist)\n\n## Need to compute RR\nnmodels <- nrow(RR)\nmod_index <- sample(1:nmodels, size=1)\nnreps = 20\nfor(k in 1:nreps) {\n    ## draw a rank ordering\n    ind_draw <- min(rgeom(1, prob=.25), nmodels - 1) \n    mod_index <- which(RR[mod_index,] == ind_draw)\n    print(mod_index) \n}\n\nY = rgeom(1000, prob=.25)\n\n",
+    "created" : 1487020052797.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3545855740",
+    "id" : "C4235DAE",
+    "lastKnownWriteTime" : 0,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled27"
+    },
+    "relative_order" : 99,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

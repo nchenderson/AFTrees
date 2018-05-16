@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\ndata(solvd_pt)\nload(\"~/personalized/Data/solvd_fit_log.RData\")\n\ntt <- seq(1, 2500, length.out=200)\n#tt <- seq(1, 1710, length.out=200)\na <- SurvivalProb(obj_log, tt)\n\nsummary(c(a$Surv))\n\n#form <- Surv(ttodthorchfhosp,deathorchfhosp) ~ study + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk + gender - 1\nsolvdt <- subset(solvd, study==\"SOLVD Treatment\")\n#solvT <- model.frame(form, data=solvdt)\nkm.by.trt <- survfit(Surv(ttodthorchfhosp, deathorchfhosp) ~ trt, data = solvdt)\n\n#plot(km.by.trt, col=c(\"black\",\"red\"), lty=2, lwd=2,\n#     xlab=\"Time\", ylab=\"Survival Probability\", cex.lab=1.1, las=1)\n\nScontrol <- apply(a$Surv[solvd$trt==\"Placebo\" & solvd$study==\"SOLVD Treatment\",], 2, mean)\nStrt <- apply(a$Surv[solvd$trt==\"treatment\" & solvd$study==\"SOLVD Treatment\",], 2, mean)\n\nSScontrol <- a$Surv[solvd$trt==\"Placebo\" & solvd$study==\"SOLVD Treatment\",]\n### Find median survival time\nmed_surv <- rep(0.0, nrow(SScontrol))\nfor(k in 1:(nrow(SScontrol))) {\n   #med_surv[k] <-\n  tmp <- max(which(SScontrol[k,] > .5))\n   med_surv[k] <- tt[tmp]\n}\nsum(med_surv < 500)/1180\nsum(med_surv <= 1500 & med_surv >= 500)/1180\nsum(med_surv > 1500)/1180\n\n\n\n\n\n\n\nnpatients <- nrow(a$Surv)\ntrt_indices <- which(solvd$study==\"SOLVD Treatment\")\nind <- sample(trt_indices, size=100)\n\n## find the indices of the two groups for the km survival plots\ntau <- length(km.by.trt$time)\nkm_ind <- which(km.by.trt$time == min(km.by.trt$time))\nkm_tt1 <- km.by.trt$time[1:(km_ind[2] - 1)]\nkm_tt2 <- km.by.trt$time[km_ind[2]:tau]\nkm_s1 <- km.by.trt$surv[1:(km_ind[2] - 1)]\nkm_s2 <- km.by.trt$surv[km_ind[2]:tau]\n\npostscript(file=\"~/workingpapers/AFTpersonal/Figures/survival_curves.eps\", width=6, height=5, horizontal=FALSE)\npar(mfrow=c(1,1), mar=c(4.1, 4.1, 1, .25))\nplot(a$time.point, a$Surv[1,], ylim=c(0,1), type=\"n\", las=1, ylab=\"Survival Probability\", xlab=\"Time\", cex.lab=1.1,\n     xlim=c(0,1700))\n#plot(km.by.trt, col=c(\"black\",\"red\"), lty=2, lwd=2,\n#     xlab=\"Time\", ylab=\"Survival Probability\", cex.lab=1.1, las=1, xlim=c(0, max(km.by.trt$time) + 50),type=\"n\")\nfor(k in ind) {\n    lines(a$time.point, a$Surv[k,], col=\"grey\")\n}\nlines(km_tt1, km_s1, lwd=2, lty=2)\nlines(km_tt2, km_s2, col=\"red\", lwd=2, lty=2)\nlines(a$time.point, Scontrol, lwd=3)\nlines(a$time.point, Strt, lwd=3, col=\"red\")\nlegend(\"bottomleft\", legend=c(\"Enalapril\",\"Placebo\",\"Enalapril - KM estimate\", \"Placebo - KM estimate\"), col=c(\"red\",\"black\",\"red\",\"black\"),\n       lwd=2, bty='n', cex=1.2, lty=c(1,1,2,2))\ndev.off()\n\n",
+    "created" : 1524165654418.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3310985372",
+    "id" : "D076451D",
+    "lastKnownWriteTime" : 1488864441,
+    "last_content_update" : 1488864441,
+    "path" : "~/personalized/FinPaperGraphs/survival_curves.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled29"
+    },
+    "relative_order" : 42,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\nPartialDependence <- function(z, col.p, Trt.col, X, y, status, nskip=200, ndpost=200) {\n   #### partial dependence plots.\n   n <- nrow(X)\n   tau <- length(z)\n   X_test <- rbind(X,X)\n   X_test[1:n,Trt.col] <- 1\n   X_test[(n+1):(2*n), Trt.col] <- 0\n   pdd_mean <- pdd_lower <- pdd_upper <- rep(0, tau)\n   for(k in 1:tau) {\n        ztmp <- z[k]\n        X_test[,col.p] <- rep(ztmp, 2*n)\n\n        obj <- AFTrees(x.train=X, y.train=y, status, x.test=X_test, nskip=nskip, ndpost=ndpost, sigquant = .5)\n        print(dim(obj$yhat.test))\n        Amat <- obj$yhat.test[,1:n] - obj$yhat.test[,(n+1):(2*n)]\n        aa <- colMeans(Amat)\n        pdd_mean[k] <- mean(aa)\n        pdd_lower[k] <- quantile(aa, prob=.025)\n        pdd_upper[k] <- quantile(aa, prob=.975)\n        #aa <- colMeans(Amat)\n        #print(summary(aa))\n   }\n   ans <- list()\n   ans$mean <- pdd_mean\n   ans$lower <- pdd_lower\n   ans$upper <- pdd_upper\n   return(ans)\n}\n\n\n\n\n\n",
+    "created" : 1526387250946.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1477679963",
+    "id" : "369E8FDA",
+    "lastKnownWriteTime" : 1484175216,
+    "last_content_update" : 1484175216,
+    "path" : "~/personalized/PartialDepend/PartialDependencePlots.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 45,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

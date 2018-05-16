@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\nb5 <- gam(y ~ s(risk), data=sim_dat$dat.trial, family=binomial)\nee <- predict(b5, data=sim_dat$dat.trial)\npp <- exp(ee)/(1 + exp(ee))\n\nA <- cbind(sim_dat$dat.trial$y, pp)\nView(A)\n\ndat.trial <- sim_dat$dat.trial\ndat.obs <- sim_dat$dat.obs\ndat.target <- sim_dat$dat.target\n  \n## Stack the two data frames and add study indicators\ndat.trial$study <- dat.trial$S <- rep(0, n.trial)\ndat.obs$study <- dat.obs$S <- rep(1, n.trial) \ndat.target$study <- dat.target$S <- rep(2, n.trial) ## doesn't matter what we put here since only obs and trial are used for fitting\n\ndat.to <- rbind(dat.trial, dat.obs)\ndat.total <- rbind(dat.trial, dat.obs, dat.target)\n\n## Estimate baseline risk\nuntreated <- dat.to$A == 0\nrisk_model <- glm(y ~ X1*X2 + study, data=dat.to, subset=untreated, family=binomial) \nbeta.hat <- risk_model$coefficients\n\n## Give baseline risk scores to all people in all studies\ndat.total$study <- 0 ## study=0 for all cases\npp <- predict(risk_model, newdata=dat.total, type=\"response\")\n\nbrisk.trial <- pp[dat.total$S == 0]\nbrisk.obs <- pp[dat.total$S == 1]\nbrisk.target <- pp[dat.total$S == 2]\n\n\n\n\nform <- y ~ X1*X2 + study\nX <- model.matrix(form, dat.total)\nbeta.hat <- risk_model$coefficients\n\nlin_pred <- X%*%beta.hat\nphat <- exp(lin_pred)/(1 + exp(lin_pred))\n\nA <- cbind(pp, phat)\n\n\n\n\n\n\n\n\n\n\nX <- model.matrix(risk_model)\n\n## Compute weights for those in the trial data\nee <- predict(flex_model, data=dat.trial)\npp <- exp(ee)/(1 + exp(ee))\nw <- 1/pp[dat.total$study==1]\n\n## Compute the risk-standardized estimates through weighted logistic regression  \nrisk_wt_model <- glm(y ~ A, weights=w, data = dat.trial, family=quasibinomial)\nans <- risk_wt_model$coefficients[2]\n\n\nsummary(pp[dat.total$study==1])\nsummary(pp[dat.total$study==0])\n\n\n",
+    "created" : 1492185033807.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1907158805",
+    "id" : "8DBDE028",
+    "lastKnownWriteTime" : 1492176184,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled31"
+    },
+    "relative_order" : 107,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

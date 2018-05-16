@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n## Functions used to generate the random functions in the Friedman simulations.\n\n##### Generating a random orthogonal matrix:  rortho{ pracma }\n#library(pracma)\n\nGenerateFriedmanVals <- function(nvars, unif_low=-1, unif_up=1) {\n\n     ### need to return: active_vars, mus, Vs, avals\n     active_vars <- list()\n     avals <- list()\n     mus <- list()\n     Vs <- list()\n     for(k in 1:10) {\n         rr <- rexp(1, rate=1/2)\n         nactive <- min(floor(2 + rr), nvars)\n         active_vars[[k]] <- sample(1:nvars, size=nactive)\n         avals[[k]] <- runif(nactive, min=unif_low, max=unif_up)\n         mus[[k]] <- rnorm(nactive)\n\n         ## generate random matrix\n         srtd <- runif(nactive, min=0.1, max=2)\n         if(length(srtd) > 1.5) {\n              DD <- diag(srtd*srtd)\n         }\n         else {\n              DD <- srtd*srtd\n         }\n         U <- randortho(nactive)\n         Vs[[k]] <- U%*%DD%*%t(U)\n     }\n     ans <- list()\n     ans$active_vars <- active_vars\n     ans$mus <- mus\n     ans$Vs <- Vs\n     ans$avals <- avals\n     return(ans)\n}\n\nGenFriedmanValsTrt <- function(nvars, unif_low=0, unif_up=1/2) {\n\n  ### need to return: active_vars, mus, Vs, avals\n  active_vars <- list()\n  avals <- list()\n  mus <- list()\n  Vs <- list()\n  rr <- rexp(1, rate=1/2)\n  nactive <- min(floor(2 + rr), nvars)\n  active_vars <- sample(1:nvars, size=nactive)\n  for(k in 1:10) {\n    avals[[k]] <- runif(nactive, min=unif_low, max=unif_up)\n    mus[[k]] <- rnorm(nactive)\n\n    ## generate random matrix\n    srtd <- runif(nactive, min=0.1, max=2)\n    if(length(srtd) > 1.5) {\n      DD <- diag(srtd*srtd)\n    }\n    else {\n      DD <- srtd*srtd\n    }\n    U <- randortho(nactive)\n    Vs[[k]] <- U%*%DD%*%t(U)\n  }\n  ans <- list()\n  ans$active_vars <- active_vars\n  ans$mus <- mus\n  ans$Vs <- Vs\n  ans$avals <- avals\n  return(ans)\n}\n\nFriedmanFunc <- function(x, obj) {\n    ### This will return an F vector of length n\n    nobs <- nrow(x)\n    ncoefs <- 10\n    gtmp <- rep(0, ncoefs)\n    atmp <- rep(0, ncoefs)\n    ftmp <- rep(0, ncoefs)\n    FF <- rep(0, nobs)\n    for(i in 1:nobs) {\n        for(k in 1:ncoefs) {\n             pp <- obj$active_vars[[k]]\n             mu <- obj$mus[[k]]\n             VV <- obj$Vs[[k]]\n             zdiff <- x[i,pp] - mu\n             uu <- crossprod(VV%*%zdiff, zdiff)\n             gtmp <- exp(-uu/2)\n             atmp <- obj$avals[[k]]\n             ftmp[k] <- sum(gtmp*atmp)\n        }\n        FF[i] <- sum(ftmp)\n    }\n    return(FF)\n}\n\nFriedmanFuncTrt <- function(x, obj) {\n  ### This will return an F vector of length n\n  nobs <- nrow(x)\n  ncoefs <- 10\n  gtmp <- rep(0, ncoefs)\n  atmp <- rep(0, ncoefs)\n  ftmp <- rep(0, ncoefs)\n  FF <- rep(0, nobs)\n  for(i in 1:nobs) {\n    pp <- obj$active_vars\n    for(k in 1:ncoefs) {\n      mu <- obj$mus[[k]]\n      VV <- obj$Vs[[k]]\n      zdiff <- x[i,pp] - mu\n      uu <- crossprod(VV%*%zdiff, zdiff)\n      gtmp <- exp(-uu/2)\n      atmp <- obj$avals[[k]]\n      ftmp[k] <- sum(gtmp*atmp)\n    }\n    FF[i] <- sum(ftmp)\n  }\n  return(FF)\n}\n\n\nFrand <- function(x, A, obj0, obj1) {\n     f0 <- FriedmanFunc(x, obj0)\n     f1 <- FriedmanFuncTrt(x, obj1)\n     ff <- f0 + A*f1\n     ans <- list()\n     ans$TrueTheta <- f1\n     ans$ff <- ff\n     return(ans)\n}\n\n\n\n\n\n\n\n\n\n\n\n",
+    "created" : 1523334123940.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3598118766",
+    "id" : "46CEE5A7",
+    "lastKnownWriteTime" : 1523334277,
+    "last_content_update" : 1523334277273,
+    "path" : "~/personalized/Reproduce_folders/SimulationCode/friedman/friedman_def.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 38,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

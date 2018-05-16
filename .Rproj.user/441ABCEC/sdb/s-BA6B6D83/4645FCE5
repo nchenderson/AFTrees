@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\n\nlibrary(pracma)\nlibrary(AFTrees)\n#library(randomForestSRC)\n\n\nsource(\"~/personalized/simulations/friedman_sims/friedman_def.R\")\n\nnreps <- 8\nnvars <- 10\nsig <- .3\nnskip = 1000\nndpost = 1000\nnseq <- c(200,1000)\nnumn <- length(nseq)\nRMSE <- MissClass <- Coverage <- obs_frac <- CILength <- Sprob <- Cind <- rep(0, nreps)\nRMSE_SP <- MissClass_SP <- Coverage_SP <- obs_frac_SP <- CILength_SP <- Sprob_SP <- Cind_SP <- rep(0, nreps)\nRMSECox <- MissClassCox <- SprobCox <- CindCox <- rep(0, nreps)\nRMSE_RF <- rep(0, nreps)\n\nResults_NP <- Results_SP <- ResultsCox <- matrix(0, nrow=numn*3, ncol=8)\ncolnames(Results_NP) <- c(\"RMSE\",\"MissClass\",\"coverage\", \"n\",\"obs_frac\",\"CILength\", \"SurvDiff\", \"Cindex\")\ncolnames(Results_SP) <- c(\"RMSE\",\"MissClass\",\"coverage\", \"n\",\"obs_frac\",\"CILength\", \"SurvDiff\", \"Cindex\")\n\n\ncount <- 1\nset.seed(48912)\n\n### Case 1: no censoring\nj=1\nk = 1\n  num.obs <- nseq[j]\n  Surv.prob.sp <- rep(0,num.obs)\n  #XX <- matrix(rnorm(nvars*num.obs), nrow=num.obs, ncol=nvars)\n # for(k in 1:nreps) {\n\n    XX <- matrix(rnorm(nvars*num.obs), nrow=num.obs, ncol=nvars)\n    Trt <- sample(c(0,1), size=num.obs, replace=TRUE)\n    obj0 <- GenerateFriedmanVals(nvars)\n    obj1 <- GenFriedmanValsTrt(nvars)\n    generated_fn <- Frand(XX, Trt, obj0, obj1)\n    \n    TrueTheta <- generated_fn$TrueTheta\n    harmful <- ifelse(TrueTheta < 0, 1, 0)\n    beneficial <- 1 - harmful\n    \n    \n\n\n\n\n",
+    "created" : 1484270572576.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "348574529",
+    "id" : "4645FCE5",
+    "lastKnownWriteTime" : 33557504,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled24"
+    },
+    "relative_order" : 73,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

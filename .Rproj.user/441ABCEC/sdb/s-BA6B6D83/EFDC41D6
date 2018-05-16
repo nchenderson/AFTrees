@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\ndata(\"iris\", package = \"datasets\")\n\n## a stump defined by a binary split in Sepal.Length\nstump <- partynode(id = 1L,\n                   split = partysplit(which(names(iris) == \"Sepal.Length\"),\n                                      breaks = 5),\n                   kids = lapply(2:3, partynode))\n\n## textual representation\nprint(stump, data = iris)\n\n## list element number and node id of the two terminal nodes\ntable(kidids_node(stump, iris),\n      fitted_node(stump, data = iris))\n\n## assign terminal nodes with probability 0.5\n## to observations with missing `Sepal.Length'\niris_NA <- iris\niris_NA[sample(1:nrow(iris), 50), \"Sepal.Length\"] <- NA\ntable(fitted_node(stump, data = iris_NA,\n                  obs = !complete.cases(iris_NA)))\n\n## a stump defined by a primary split in `Sepal.Length'\n## and a surrogate split in `Sepal.Width' which\n## determines terminal nodes for observations with\n## missing `Sepal.Length'\nstump <- partynode(id = 1L,\n                   split = partysplit(which(names(iris) == \"Sepal.Length\"),\n                                      breaks = 5),\n                   kids = lapply(2:3, partynode),\n                   surrogates = list(partysplit(\n                     which(names(iris) == \"Sepal.Width\"), breaks = 3)))\n\n\nAddNodeDepth <- function(TreeObj) {\n    node_depth <- TreeObj$max.node.depth\n    nvars <- TreeObj$nvars\n    ## find terminal nodes at the specified node depth\n    num_nodes <- length(TreeObj$tree[[node_depth+1]])  ## number of nodes at current depth\n    print(num_nodes)\n    for(k in 1:num_nodes) {\n       qd <- 1/2\n       ## Sample splitting variable uniformly\n       split.var <- sample(1:nvars, size=1)\n       ## Draw splitting value\n       split.value <- runif(1)\n\n       ## Draw an indicator of whether or not this node will be terminal or not.\n       split.indicator <- sample(0:1, size=1, prob=c(qd, 1 - qd))\n       count <- 0\n       if(split.ind) {\n           TreeObj$tree[[node_depth + 2]] <- list()\n           TreeObj$tree[[node_depth + 2]][count + 1] <- count + 1\n           TreeObj$tree[[node_depth + 2]][count + 2] <- count + 2\n\n           TreeObj$children[[node_depth + 1]] <- list()\n           TreeObj$split.var[[node_depth + 1]] <- list()\n           TreeObj$split.value[[node_depth + 1]] <- list()\n           TreeObj$children[[node_depth + 1]][[k]] <- c(count + 1, count + 2)\n           TreeObj$split.var[[node_depth + 1]][[k]] <- split.var\n           TreeObj$split.value[[node_depth + 1]][[k]] <- split.value\n           count <- count + 2\n       }\n    }\n    TreeObj$max.node.depth <- ifelse(count > 0, node_depth + 1, node_depth)\n    return(TreeObj)\n}\n\nInitializeTree <- function() {\n  ## A Tree should have the following components:\n  ##\n  ##   max.node.depth - the maximum node depth of the tree\n  ##   Tree$tree[[node_depth + 1]][j] - the jth node at node depth \"node_depth\"\n  ##   Tree$split.var[[node_depth]][j] - the splitting variable at the jth node of node depth \"node_depth\"\n  ##   Tree$split.value[[node_depth]][j]\n\n  TT <- list()\n  TT$tree <- list()\n  TT$tree[[1]] <- 1\n  TT$max.node.depth <- 0\n  TT$nvars <- 5\n  TT$split.var <- NULL\n  TT$split.value <- NULL\n  class(TT) <- bart.tree\n  return(TT)\n}\nTT <- list()\nTT$tree <- list()\nTT$tree[[1]] <- 1\nTT$max.node.depth <- 0\nTT$nvars <- 5\nTT$split.var <- NULL\nTT$split.value <- NULL\n\na = AddNodeDepth(TT)\n\nb = AddNodeDepth(a)\n\n\n\n\n\n\n\n\n\n\n\n\n",
+    "created" : 1493651429133.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1422575908",
+    "id" : "EFDC41D6",
+    "lastKnownWriteTime" : 1493657169,
+    "last_content_update" : 1493657169266,
+    "path" : "~/BART_BMA/Tree_code/tree_test.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled32"
+    },
+    "relative_order" : 27,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

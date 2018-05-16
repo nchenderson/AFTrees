@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "##simulate data (example from Friedman MARS paper)\nf = function(x){\n  10*sin(pi*x[,1]*x[,2]) + 20*(x[,3]-.5)^2+10*x[,4]+5*x[,5]\n}\nsigma = 1.0  #y = f(x) + sigma*z , z~N(0,1)\nn = 1000     #number of observations\nset.seed(99)\nx=matrix(runif(n*10),n,10) #10 variables, only first 5 matter\nEy = f(x)\ny=Ey+sigma*rnorm(n)\nlmFit = lm(y~.,data.frame(x,y)) #compare lm fit to BART later\n##run BART\nset.seed(99)\nsystem.time(bartFit <- bart(x,y,ndpost=200,nskip=100,printevery=100)) \n## need to record mix.prop, locations, and mass\nbartFit$mix.prop[10,]\nbartFit$locations[10,]\nbartFit$mass[10]\n\ntgrid <- seq(-5, 5, length.out=200)\n\nplot(tgrid, fhat, type=\"n\")\nlines(tgrid, dnorm(tgrid), col=\"red\", lwd=3)\nfor(k in 1:10) {\n   FF <- dnorm(outer(tgrid, bartFit$locations[k,], FUN=\"-\"), sd=bartFit$sigma[k])\n   ff <- bartFit$mix.prop[k,]\n   fhat <- FF%*%ff\n   lines(tgrid, fhat)\n}\n\nu <- runif(1)\n\na=2\nmu = 5\nsigma = 1\n\nu = runif(1000)\ntt = pnorm(a, mean=mu, sd=sigma) + u*pnorm(a, mean=mu, sd=sigma, lower.tail=FALSE)\nX = mu + sigma*qnorm(tt)\n\nhist(X)\nbartFit = bart(x,y,ndpost=100,nskip=100) #default is ndpost=1000, this is to run example fast.\ntgrid <- seq(-5, 5, length.out=200)\n\nplot(tgrid, dnorm(tgrid), type=\"n\")\nlines(tgrid, dnorm(tgrid), col=\"red\", lwd=3)\nfor(k in 1:10) {\n  FF <- dnorm(outer(tgrid, bartFit$locations[k,], FUN=\"-\"), sd=bartFit$sigma[k])\n  ff <- bartFit$mix.prop[k,]\n  fhat <- FF%*%ff\n  lines(tgrid, fhat)\n}\n\n\n\n",
+    "created" : 1462278693463.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2881864994",
+    "id" : "ADB96184",
+    "lastKnownWriteTime" : 4,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled3"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

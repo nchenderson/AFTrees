@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\nn <- 500\nsig <- .2\nxx <- sort(runif(n))\nmm <- .5 + pnorm(5*xx - 2.5)\nyy <- mm + sig*rnorm(n)\n\nX <- matrix(xx, nrow=n, ncol=1)\n\nbartFit1 = bart(X,yy, ntree=1,ndpost=1000) \nbartFit2 = bart(X, yy, ntree=5, ndpost=1000)\nbartFit3 = bart(X, yy, ntree=200, ndpost=1000)\n\nyhat1 <- bartFit1$yhat.train.mean\nyhat2 <- bartFit2$yhat.train.mean\nyhat3 <- bartFit3$yhat.train.mean\n\npostscript(file=\"~/Presentations/Merck/Figures/bart_example.eps\", width=6, height=5, horizontal=FALSE)\npar(mfrow=c(1,1), mar=c(4.1, 4.1, 1, .25))\nplot(xx, yhat1, type=\"n\", ylim=c(.4, 1.6), las=1, xlab=\"x\", ylab=\"E(Y|x)\", cex=1.2)\nlines(xx, mm, lwd=3)\n#lines(xx, yhat1, lwd=2, col=\"red\")\n#lines(xx, yhat2, lwd=2, col=\"blue\")\nlines(xx, yhat3, lwd=3, col=\"red\")\nlegend(\"topleft\", legend=c(\"True\",\"BART\"), col=c(\"black\",\"red\"), lwd=2, bty=\"n\")\ndev.off()\n\n",
+    "created" : 1487539194918.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "781832091",
+    "id" : "44C766E7",
+    "lastKnownWriteTime" : 4294967295,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled28"
+    },
+    "relative_order" : 101,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

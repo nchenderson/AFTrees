@@ -1,0 +1,1 @@
+void truncNormImpute(double* Y, double* Yobserved, int* delta, double* mtotalfit, double* indiv_locations, double* sig, int nobs); 

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "CombineRegressions <- function(regobj.list) {\n\n   betahat.list <- lapply(regobj.list, function(x) coef(x))\n   vcov.list <- lapply(regobj.list, function(x) vcov(x))\n\n   nchunks <- length(betahat.list)\n   p <- length(betahat.list[[1]])\n   XtY <- rep(0, p)\n   XtX <- matrix(0, nrow=p, ncol=p)\n\n    for(k in 1:nchunks) {\n          XtX.list <- solve(vcov.list[[k]])\n          XtY <- XtY + drop(XtX.list %*% betahat.list[[k]])\n          XtX <- XtX + XtX.list\n    }\n\n    vcov <- solve(XtX)\n\n    betahat <- drop(vcov %*% XtY)\n\n    return(list(beta=beta.hat, vcov=vcov))\n\n}\n",
+    "created" : 1523304284535.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3145771978",
+    "id" : "67A9F96F",
+    "lastKnownWriteTime" : 1523309144,
+    "last_content_update" : 1523309144682,
+    "path" : "~/Bivariate_subgroup/combineReg.r",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 36,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

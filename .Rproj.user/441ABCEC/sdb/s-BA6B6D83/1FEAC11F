@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\nn <- 100\np <- 3\nX <- matrix(rnorm(n*p), nrow=n, ncol=p)\nind <- sample(1:n, size=50)\nX1 <- X[ind,]\nX2 <- X[-ind,]\n\nA1 <- solve(crossprod(X,X))\nA2 <- solve(crossprod(X1, X1) + crossprod(X2, X2))\n\n\nall.equal(A1, A2)\n\nCombineRegressions <- function(beta.hat.list, XtX.list) {\n  \n    tau <- length(beta.hat.list)\n    p <- ncol(XtX.list[[1]])\n    XtY <- rep(0, p)\n    XtX <- matrix(0, nrow=p, ncol=p)\n    for(k in 1:tau) {\n        XtY <- XtY + XtX.list[[k]]%*%beta.hat.list[[k]]\n        XtX <- XtX + XtX.list[[k]]\n    }\n    beta.hat <- solve(XtX, XtY)\n    return(beta.hat)\n}\n\nn <- 100\np <- 3\nX <- matrix(rnorm(n*p), nrow=n, ncol=p)\nY <- rnorm(n)\n\ndat <- data.frame(Y, X)\n\nind <- sample(1:n, size=50)\ndat1 <- dat[ind,]\ndat2 <- dat[-ind,]\n\nlm1 <- lm(Y ~ X1 + X2 + X3, data=dat1)\nlm2 <- lm(Y ~ X1 + X2 + X3, data=dat2)\n\nbeta.hat.list <- XtX.list <-  list()\nbeta.hat.list[[1]] <- lm1$coefficients\nbeta.hat.list[[2]] <- lm2$coefficients\nXtX.list[[1]] <- crossprod(model.matrix(lm1), model.matrix(lm1))\nXtX.list[[2]] <- crossprod(model.matrix(lm2), model.matrix(lm2))\n\na <- CombineRegressions(beta.hat.list, XtX.list) \n\n### Compare with fit from entire data\nlm.total <- lm(Y ~ X1 + X2 + X3, data=dat)\n\na\nlm.total$coefficients\n\nall.equal(as.vector(a), as.vector(lm.total$coefficients))\n\n\n",
+    "created" : 1523296922703.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1548849371",
+    "id" : "1FEAC11F",
+    "lastKnownWriteTime" : 4,
+    "last_content_update" : 1523301177307,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled39"
+    },
+    "relative_order" : 40,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

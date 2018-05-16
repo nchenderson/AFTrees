@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\nrt3mix <- function(n, mu, sd, mix.prop) {\n   ### Mixture of three t-densities.\n   labels <- sample(1:3, size=n, replace=TRUE)\n  \n}\n\n\n\n",
+    "created" : 1463184691386.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2105877555",
+    "id" : "DB6979F1",
+    "lastKnownWriteTime" : 93195872,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled7"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

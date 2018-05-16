@@ -1,0 +1,512 @@
+e[!ind] <- d
+e
+A
+library("survival", lib.loc="/usr/lib/R/library")
+survreg(Surv(futime, fustat) ~ ecog.ps + rx, ovarian,
+dist="exponential")
+detach("package:survival", unload=TRUE)
+library("survival", lib.loc="/usr/lib/R/library")
+detach("package:survival", unload=TRUE)
+survreg(Surv(futime, fustat) ~ ecog.ps + rx, ovarian,
+dist="exponential")
+library("survival", lib.loc="/usr/lib/R/library")
+survreg(Surv(futime, fustat) ~ ecog.ps + rx, ovarian,
+dist="exponential")
+update.packages(checkBuild=TRUE)
+detach("package:survival", unload=TRUE)
+remove.packages("survival", lib="/usr/lib/R/library")
+install.packages("survival")
+library(AFTrees)
+n <- 500
+age <- runif(n)
+age <- sort(age)
+muvec <- muvec_trt <- rep(0, n)
+for(k in 1:n) {
+muvec[k] <- 1/2 + pnorm(5*(age[k] - .5))
+muvec_trt[k] <- .35 + muvec[k]
+}
+## generate responses without censoring
+a0 = muvec + rnorm(n)
+a1 = muvec_trt + rnorm(n)
+yy = c(a0, a1)
+Trt <- c(rep(0,n), rep(1,n))
+XX <- matrix(rep(age,2), ncol=1)
+aftFit <- IndivAFT(XX,exp(yy),status=rep(1,2*n),Trt=Trt,ndpost=500,nskip=500,printevery=100)
+aftFit2 <- IndivAFT(XX, exp(yy), statis=rep(1,2*n), Trt=Trt, ndpost=500, nskip=500, printevery=100)
+aftFit2 <- IndivAFTNew(XX, exp(yy), status=rep(1,2*n), Trt=Trt, ndpost=500, nskip=500, printevery=100)
+library(AFTrees)
+n <- 500
+age <- runif(n)
+age <- sort(age)
+muvec <- muvec_trt <- rep(0, n)
+for(k in 1:n) {
+muvec[k] <- 1/2 + pnorm(5*(age[k] - .5))
+muvec_trt[k] <- .35 + muvec[k]
+}
+## generate responses without censoring
+a0 = muvec + rnorm(n)
+a1 = muvec_trt + rnorm(n)
+yy = c(a0, a1)
+Trt <- c(rep(0,n), rep(1,n))
+XX <- matrix(rep(age,2), ncol=1)
+aftFit <- IndivAFT(XX,exp(yy),status=rep(1,2*n),Trt=Trt,ndpost=500,nskip=500,printevery=100)
+aftFit2 <- IndivAFTNew(XX, exp(yy), status=rep(1,2*n), Trt=Trt, ndpost=500, nskip=500, printevery=100)
+load("~/personalized/Data/solvd_fit.RData")
+load("~/personalized/Data/solvd_fit_log.RData")
+source("~/personalized/PartialDepend/PartialDependencePlots.R")
+data(solvd_pt)
+s1 <- solvd$study=="SOLVD Treatment" & solvd$gender=="male"
+s2 <- solvd$study=="SOLVD Treatment" & solvd$gender=="female"
+s3 <- solvd$study=="SOLVD Prevention" & solvd$gender=="male"
+s4 <- solvd$study=="SOLVD Prevention" & solvd$gender=="female"
+thet1 <- rowMeans(obj$Theta[,s1])
+thet2 <- rowMeans(obj$Theta[,s2])
+thet3 <- rowMeans(obj$Theta[,s3])
+thet4 <- rowMeans(obj$Theta[,s4])
+s1_diabet <- solvd$study=="SOLVD Treatment" & solvd$himi==1
+s2_diabet <- solvd$study=="SOLVD Treatment" & solvd$himi==0
+s3_diabet <- solvd$study=="SOLVD Prevention" & solvd$himi==1
+s4_diabet <- solvd$study=="SOLVD Prevention" & solvd$himi==0
+thet1_d <- rowMeans(obj$Theta[,s1_diabet])
+thet2_d <- rowMeans(obj$Theta[,s2_diabet])
+thet3_d <- rowMeans(obj$Theta[,s3_diabet])
+thet4_d <- rowMeans(obj$Theta[,s4_diabet])
+d1 <- density(thet1)
+d2 <- density(thet2)
+d3 <- density(thet3)
+d4 <- density(thet4)
+d1_himi <- density(thet1_d)
+d2_himi <- density(thet2_d)
+d3_himi <- density(thet3_d)
+d4_himi <- density(thet4_d)
+load("~/personalized/Data/solvd_fit.RData")
+load("~/personalized/Data/solvd_fit_log.RData")
+source("~/personalized/PartialDepend/PartialDependencePlots.R")
+solvdT <- read.csv("~/personalized/Data/solvdT.csv")
+solvd0 <- solvdT[solvdT$gender==1,]
+solvd1 <- solvdT[solvdT$gender==0,]
+#### Now just nee
+names(solvdT)
+solvd0 <- solvdT[solvdT$gend==1,]
+solvd1 <- solvdT[solvdT$gend==0,]
+solvd0 <- solvdT[solvdT$gend==0,]
+solvd1 <- solvdT[solvdT$gend==1,]
+#### Now just need partial dependence plots for baseline ejection fraction.
+form <- ttodthorchfhosp ~ study + trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+X0 <- model.matrix(form, solvd0)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status0 <- solvd0$deathorchfhosp
+y0 <- solvd0$ttodthorchfhosp
+form <- ttodthorchfhosp ~ study + trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+X1 <- model.matrix(form, solvd0)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status1 <- solvd1$deathorchfhosp
+y1 <- solvd1$ttodthorchfhosp
+solvd0 <- solvdT[solvdT$gend==0,]
+solvd1 <- solvdT[solvdT$gend==1,]
+#### Now just need partial dependence plots for baseline ejection fraction.
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+X0 <- model.matrix(form, solvd0)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status0 <- solvd0$deathorchfhosp
+y0 <- solvd0$ttodthorchfhosp
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+X1 <- model.matrix(form, solvd0)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status1 <- solvd1$deathorchfhosp
+y1 <- solvd1$ttodthorchfhosp
+solvd0 <- solvdT[solvdT$gend==0,]
+solvd1 <- solvdT[solvdT$gend==1,]
+#### Now just need partial dependence plots for baseline ejection fraction.
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+X0 <- model.matrix(form, solvd0)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status0 <- solvd0$deathorchfhosp
+y0 <- solvd0$ttodthorchfhosp
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+X1 <- model.matrix(form, solvd1)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status1 <- solvd1$deathorchfhosp
+y1 <- solvd1$ttodthorchfhosp
+zseq <- seq(10, 35, length.out=4)
+zzseq <- seq(10, 35, length.out=4)
+nsk <- 500
+npo <- 1000
+pdd0 <- PartialDependence(z=zseq, col.p=8, Trt.col=3, X=X0, y=y0, status=status0, nskip=nsk, ndpost=npo)
+pdd1 <- PartialDependence(z=zzseq, col.p=8, Trt.col=3, X=X1, y=y1, status=status1, nskip=nsk, ndpost=npo)
+library("AFTrees", lib.loc="~/R/x86_64-pc-linux-gnu-library/3.4")
+zseq <- seq(10, 35, length.out=4)
+zzseq <- seq(10, 35, length.out=4)
+nsk <- 500
+npo <- 1000
+pdd0 <- PartialDependence(z=zseq, col.p=8, Trt.col=3, X=X0, y=y0, status=status0, nskip=nsk, ndpost=npo)
+pdd1 <- PartialDependence(z=zzseq, col.p=8, Trt.col=3, X=X1, y=y1, status=status1, nskip=nsk, ndpost=npo)
+length(y1)
+dim(X1)
+solvd0 <- solvdT[solvdT$gend==0,]
+solvd1 <- solvdT[solvdT$gend==1,]
+#### Now just need partial dependence plots for baseline ejection fraction.
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+solvd0 <- model.frame(form, solvd0)
+X0 <- model.matrix(form, solvd0)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status0 <- solvd0$deathorchfhosp
+y0 <- solvd0$ttodthorchfhosp
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+solvd1 <- model.frame(form, solvd1)
+X1 <- model.matrix(form, solvd1)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status1 <- solvd1$deathorchfhosp
+y1 <- solvd1$ttodthorchfhosp
+zseq <- seq(10, 35, length.out=4)
+zzseq <- seq(10, 35, length.out=4)
+nsk <- 500
+npo <- 1000
+pdd0 <- PartialDependence(z=zseq, col.p=8, Trt.col=3, X=X0, y=y0, status=status0, nskip=nsk, ndpost=npo)
+pdd1 <- PartialDependence(z=zzseq, col.p=8, Trt.col=3, X=X1, y=y1, status=status1, nskip=nsk, ndpost=npo)
+length(status0)
+solvd0 <- solvdT[solvdT$gend==0,]
+solvd1 <- solvdT[solvdT$gend==1,]
+#### Now just need partial dependence plots for baseline ejection fraction.
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+formm <- ttodthorchfhosp ~ deathorchfhosp + trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+solvd0 <- model.frame(formm, solvd0)
+X0 <- model.matrix(form, solvd0)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status0 <- solvd0$deathorchfhosp
+y0 <- solvd0$ttodthorchfhosp
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+formm <- ttodthorchfhosp ~ deathorchfhosp + trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+solvd1 <- model.frame(formm, solvd1)
+X1 <- model.matrix(form, solvd1)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status1 <- solvd1$deathorchfhosp
+y1 <- solvd1$ttodthorchfhosp
+zseq <- seq(10, 35, length.out=4)
+zzseq <- seq(10, 35, length.out=4)
+nsk <- 500
+npo <- 1000
+pdd0 <- PartialDependence(z=zseq, col.p=8, Trt.col=3, X=X0, y=y0, status=status0, nskip=nsk, ndpost=npo)
+pdd1 <- PartialDependence(z=zzseq, col.p=8, Trt.col=3, X=X1, y=y1, status=status1, nskip=nsk, ndpost=npo)
+load("~/personalized/Data/solvd_fit.RData")
+load("~/personalized/Data/solvd_fit_log.RData")
+source("~/personalized/PartialDepend/PartialDependencePlots.R")
+solvdT <- read.csv("~/personalized/Data/solvdT.csv")
+solvd0 <- solvdT[solvdT$gend==0,]
+solvd1 <- solvdT[solvdT$gend==1,]
+#### Now just need partial dependence plots for baseline ejection fraction.
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+formm <- ttodthorchfhosp ~ deathorchfhosp + trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+solvd0 <- model.frame(formm, solvd0)
+X0 <- model.matrix(form, solvd0)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status0 <- solvd0$deathorchfhosp
+y0 <- solvd0$ttodthorchfhosp
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+formm <- ttodthorchfhosp ~ deathorchfhosp + trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+solvd1 <- model.frame(formm, solvd1)
+X1 <- model.matrix(form, solvd1)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status1 <- solvd1$deathorchfhosp
+y1 <- solvd1$ttodthorchfhosp
+zseq <- seq(10, 35, length.out=25)
+zzseq <- seq(10, 35, length.out=25)
+nsk <- 500
+npo <- 1000
+pdd0 <- PartialDependence(z=zseq, col.p=8, Trt.col=3, X=X0, y=y0, status=status0, nskip=nsk, ndpost=npo)
+pdd1 <- PartialDependence(z=zzseq, col.p=8, Trt.col=3, X=X1, y=y1, status=status1, nskip=nsk, ndpost=npo)
+pdsmooth0 <- supsmu(zseq, pdd0$mean)
+pdsmooth0_low <- supsmu(zseq, pdd0$lower)
+pdsmooth0_up <- supsmu(zseq, pdd0$upper)
+pdsmooth1 <- supsmu(zseq, pdd1$mean)
+pdsmooth1_low <- supsmu(zseq, pdd1$lower)
+pdsmooth1_up <- supsmu(zseq, pdd1$upper)
+#zseq <- zseq/100
+#postscript(file="~/workingpapers/AFTpersonal/Figures/pd_plots.eps", width=6.5,
+#           height=5, horizontal=FALSE)
+par(mfrow=c(1,1), mar=c(3.6, 3.6,.15,.05), mgp=c(1.75,.5,0))
+plot(zseq, pdd0$mean, type="n", las=1, xlim=c(.1, .35), ylim=c(-.2,1.0), xlab="Ejection Fraction",
+ylab="Difference in log survival")
+lines(pdsmooth0$x/100, pdsmooth0_low$y)
+lines(pdsmooth1$x/100, pdsmooth1_low$y, col="red")
+par(mfrow=c(1,1), mar=c(3.6, 3.6,.15,.05), mgp=c(1.75,.5,0))
+plot(zseq, pdd0$mean, type="n", las=1, xlim=c(.1, .35), ylim=c(-.2,1.0), xlab="Ejection Fraction",
+ylab="Difference in log survival")
+lines(pdsmooth0$x/100, pdsmooth0$y)
+lines(pdsmooth1$x/100, pdsmooth1$y, col="red")
+head(X1)
+load("~/personalized/Data/solvd_fit.RData")
+load("~/personalized/Data/solvd_fit_log.RData")
+source("~/personalized/PartialDepend/PartialDependencePlots.R")
+solvdT <- read.csv("~/personalized/Data/solvdT.csv")
+solvd0 <- solvdT[solvdT$gend==0,]
+solvd1 <- solvdT[solvdT$gend==1,]
+#### Now just need partial dependence plots for baseline ejection fraction.
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+formm <- ttodthorchfhosp ~ deathorchfhosp + trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+solvd0 <- model.frame(formm, solvd0)
+X0 <- model.matrix(form, solvd0)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status0 <- solvd0$deathorchfhosp
+y0 <- solvd0$ttodthorchfhosp
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+formm <- ttodthorchfhosp ~ deathorchfhosp + trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+solvd1 <- model.frame(formm, solvd1)
+X1 <- model.matrix(form, solvd1)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status1 <- solvd1$deathorchfhosp
+y1 <- solvd1$ttodthorchfhosp
+zseq <- seq(10, 35, length.out=10)
+zzseq <- seq(10, 35, length.out=10)
+nsk <- 500
+npo <- 1000
+pdd0 <- PartialDependence(z=zseq, col.p=7, Trt.col=1, X=X0, y=y0, status=status0, nskip=nsk, ndpost=npo)
+pdd1 <- PartialDependence(z=zzseq, col.p=7, Trt.col=1, X=X1, y=y1, status=status1, nskip=nsk, ndpost=npo)
+pdsmooth0 <- supsmu(zseq, pdd0$mean)
+pdsmooth0_low <- supsmu(zseq, pdd0$lower)
+pdsmooth0_up <- supsmu(zseq, pdd0$upper)
+pdsmooth1 <- supsmu(zseq, pdd1$mean)
+pdsmooth1_low <- supsmu(zseq, pdd1$lower)
+pdsmooth1_up <- supsmu(zseq, pdd1$upper)
+#zseq <- zseq/100
+#postscript(file="~/workingpapers/AFTpersonal/Figures/pd_plots.eps", width=6.5,
+#           height=5, horizontal=FALSE)
+par(mfrow=c(1,1), mar=c(3.6, 3.6,.15,.05), mgp=c(1.75,.5,0))
+plot(zseq, pdd0$mean, type="n", las=1, xlim=c(.1, .35), ylim=c(-.2,1.0), xlab="Ejection Fraction",
+ylab="Difference in log survival")
+lines(pdsmooth0$x/100, pdsmooth0$y)
+lines(pdsmooth1$x/100, pdsmooth1$y, col="red")
+pdd1$mean
+length(pddsmooth0$x)
+length(pddsmooth0$x)
+length(pdsmooth0$x)
+#zseq <- zseq/100
+#postscript(file="~/workingpapers/AFTpersonal/Figures/pd_plots.eps", width=6.5,
+#           height=5, horizontal=FALSE)
+par(mfrow=c(1,1), mar=c(3.6, 3.6,.15,.05), mgp=c(1.75,.5,0))
+plot(zseq, pdd0$mean, type="n", las=1, xlim=c(.1, .35), ylim=c(-.2,1.0), xlab="Ejection Fraction",
+ylab="Difference in log survival")
+lines(pdsmooth0$x/100, pdsmooth0$y)
+lines(pdsmooth1$x/100, pdsmooth1$y, col="red")
+points(pdsmooth0$x/100, pdd1$mean)
+#zseq <- zseq/100
+#postscript(file="~/workingpapers/AFTpersonal/Figures/pd_plots.eps", width=6.5,
+#           height=5, horizontal=FALSE)
+par(mfrow=c(1,1), mar=c(3.6, 3.6,.15,.05), mgp=c(1.75,.5,0))
+plot(zseq, pdd0$mean, type="n", las=1, xlim=c(.1, .35), ylim=c(-.2,1.0), xlab="Ejection Fraction",
+ylab="Difference in log survival")
+lines(pdsmooth0$x/100, pdsmooth0$y)
+lines(pdsmooth1$x/100, pdsmooth1$y, col="red")
+points(pdsmooth0$x/100, pdd1$mean)
+points(pdsmooth0$x/100, pdd0$mean)
+head(X1)
+head(X0)
+summary(X1[,7])
+summary(X0[,7])
+dim(X1)
+dim(X0)
+#zseq <- zseq/100
+#postscript(file="~/workingpapers/AFTpersonal/Figures/pd_plots.eps", width=6.5,
+#           height=5, horizontal=FALSE)
+par(mfrow=c(1,1), mar=c(3.6, 3.6,.15,.05), mgp=c(1.75,.5,0))
+plot(zseq, pdd0$mean, type="n", las=1, xlim=c(.1, .35), ylim=c(-.2,1.0), xlab="Ejection Fraction",
+ylab="Difference in log survival")
+lines(pdsmooth0$x/100, pdsmooth0$y)
+lines(pdsmooth1$x/100, pdsmooth1$y, col="red")
+lines(pdsmooth0$x/100, pdsmooth0_low$y, col="red")
+lines(pdsmooth0$x/100, pdsmooth0_up$y, col="red")
+points(pdsmooth0$x/100, pdd1$mean)
+points(pdsmooth0$x/100, pdd0$mean)
+#zseq <- zseq/100
+#postscript(file="~/workingpapers/AFTpersonal/Figures/pd_plots.eps", width=6.5,
+#           height=5, horizontal=FALSE)
+par(mfrow=c(1,1), mar=c(3.6, 3.6,.15,.05), mgp=c(1.75,.5,0))
+plot(zseq, pdd0$mean, type="n", las=1, xlim=c(.1, .35), ylim=c(-.2,1.0), xlab="Ejection Fraction",
+ylab="Difference in log survival")
+lines(pdsmooth0$x/100, pdsmooth0$y)
+lines(pdsmooth1$x/100, pdsmooth1$y, col="red")
+lines(pdsmooth0$x/100, pdsmooth0_low$y)
+lines(pdsmooth0$x/100, pdsmooth0_up$y)
+points(pdsmooth0$x/100, pdd1$mean)
+points(pdsmooth0$x/100, pdd0$mean)
+load("~/personalized/Data/solvd_fit.RData")
+load("~/personalized/Data/solvd_fit_log.RData")
+source("~/personalized/PartialDepend/PartialDependencePlots.R")
+solvdT <- read.csv("~/personalized/Data/solvdT.csv")
+solvd0 <- solvdT[solvdT$gend==0,]
+solvd1 <- solvdT[solvdT$gend==1,]
+#### Now just need partial dependence plots for baseline ejection fraction.
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+formm <- ttodthorchfhosp ~ deathorchfhosp + trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+solvd0 <- model.frame(formm, solvd0)
+X0 <- model.matrix(form, solvd0)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status0 <- solvd0$deathorchfhosp
+y0 <- solvd0$ttodthorchfhosp
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+formm <- ttodthorchfhosp ~ deathorchfhosp + trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+solvd1 <- model.frame(formm, solvd1)
+X1 <- model.matrix(form, solvd1)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status1 <- solvd1$deathorchfhosp
+y1 <- solvd1$ttodthorchfhosp
+load("~/personalized/Data/solvd_fit.RData")
+load("~/personalized/Data/solvd_fit_log.RData")
+source("~/personalized/PartialDepend/PartialDependencePlots.R")
+solvdT <- read.csv("~/personalized/Data/solvdT.csv")
+solvd0 <- solvdT[solvdT$gend==0,]
+solvd1 <- solvdT[solvdT$gend==1,]
+#### Now just need partial dependence plots for baseline ejection fraction.
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+formm <- ttodthorchfhosp ~ deathorchfhosp + trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+solvd0 <- model.frame(formm, solvd0)
+X0 <- model.matrix(form, solvd0)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status0 <- solvd0$deathorchfhosp
+y0 <- solvd0$ttodthorchfhosp
+form <- ttodthorchfhosp ~ trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+formm <- ttodthorchfhosp ~ deathorchfhosp + trt + age + smoke + diabet + lvef + himi + nyha + depedema + crackles + weightkg + anydiurbl + avsys + avdia + beat + creatinine + sodium + copd + histk - 1
+solvd1 <- model.frame(formm, solvd1)
+X1 <- model.matrix(form, solvd1)
+#colnames(XX)[8]
+#colnames(XX)[18]
+status1 <- solvd1$deathorchfhosp
+y1 <- solvd1$ttodthorchfhosp
+zseq <- seq(10, 35, length.out=30)
+zzseq <- seq(10, 35, length.out=30)
+nsk <- 500
+npo <- 1000
+pdd0 <- PartialDependence(z=zseq, col.p=7, Trt.col=1, X=X0, y=y0, status=status0, nskip=nsk, ndpost=npo)
+pdd1 <- PartialDependence(z=zzseq, col.p=7, Trt.col=1, X=X1, y=y1, status=status1, nskip=nsk, ndpost=npo)
+####  Plot Graphs
+#par(mar=c(5.1,4.1,4.1,2.1)
+## bottom, left, top, right
+pdsmooth0 <- supsmu(zseq, pdd0$mean)
+pdsmooth0_low <- supsmu(zseq, pdd0$lower)
+pdsmooth0_up <- supsmu(zseq, pdd0$upper)
+pdsmooth1 <- supsmu(zseq, pdd1$mean)
+pdsmooth1_low <- supsmu(zseq, pdd1$lower)
+pdsmooth1_up <- supsmu(zseq, pdd1$upper)
+#zseq <- zseq/100
+#postscript(file="~/workingpapers/AFTpersonal/Figures/pd_plots.eps", width=6.5,
+#           height=5, horizontal=FALSE)
+par(mfrow=c(1,1), mar=c(3.6, 3.6,.15,.05), mgp=c(1.75,.5,0))
+plot(zseq, pdd0$mean, type="n", las=1, xlim=c(.1, .35), ylim=c(-.2,1.0), xlab="Ejection Fraction",
+ylab="Difference in log survival")
+lines(pdsmooth0$x/100, pdsmooth0$y)
+lines(pdsmooth1$x/100, pdsmooth1$y, col="red")
+lines(pdsmooth0$x/100, pdsmooth0_low$y)
+lines(pdsmooth0$x/100, pdsmooth0_up$y)
+points(pdsmooth0$x/100, pdd1$mean)
+points(pdsmooth0$x/100, pdd0$mean)
+#zseq <- zseq/100
+#postscript(file="~/workingpapers/AFTpersonal/Figures/pd_plots.eps", width=6.5,
+#           height=5, horizontal=FALSE)
+par(mfrow=c(1,1), mar=c(3.6, 3.6,.15,.05), mgp=c(1.75,.5,0))
+plot(zseq, pdd0$mean, type="n", las=1, xlim=c(.1, .35), ylim=c(.2,0.8), xlab="Ejection Fraction",
+ylab="Difference in log survival")
+lines(pdsmooth0$x/100, pdsmooth0$y)
+lines(pdsmooth1$x/100, pdsmooth1$y, col="red")
+lines(pdsmooth0$x/100, pdsmooth0_low$y)
+lines(pdsmooth0$x/100, pdsmooth0_up$y)
+points(pdsmooth0$x/100, pdd1$mean)
+points(pdsmooth0$x/100, pdd0$mean)
+summary(X1[,7])
+summary(X0[,7])
+n <- 100
+p <- 3
+X <- matrix(rnorm(n*p), nrow=n, ncol=p)
+ind <- sample(1:n, size=50)
+X1 <- X[ind,]
+X2 <- X[-ind,]
+A1 <- solve(crossprod(X,X))
+A2 <- solve(crossprod(X1, X1) + crossprod(X2, X2))
+A1
+A2
+all.equal(A1, A2)
+n <- 100
+p <- 3
+X <- matrix(rnorm(n*p), nrow=n, ncol=p)
+ind <- sample(1:n, size=50)
+X1 <- X[ind,]
+X2 <- X[-ind,]
+A1 <- solve(crossprod(X,X))
+A2 <- solve(crossprod(X1, X1) + crossprod(X2, X2))
+all.equal(A1, A2)
+n <- 100
+p <- 3
+X <- matrix(rnorm(n*p), nrow=n, ncol=p)
+ind <- sample(1:n, size=50)
+X1 <- X[ind,]
+X2 <- X[-ind,]
+A1 <- solve(crossprod(X,X))
+A2 <- solve(crossprod(X1, X1) + crossprod(X2, X2))
+all.equal(A1, A2)
+n <- 100
+p <- 3
+X <- matrix(rnorm(n*p), nrow=n, ncol=p)
+ind <- sample(1:n, size=50)
+X1 <- X[ind,]
+X2 <- X[-ind,]
+A1 <- solve(crossprod(X,X))
+A2 <- solve(crossprod(X1, X1) + crossprod(X2, X2))
+all.equal(A1, A2)
+n <- 100
+p <- 3
+X <- matrix(rnorm(n*p), nrow=n, ncol=p)
+ind <- sample(1:n, size=50)
+X1 <- X[ind,]
+X2 <- X[-ind,]
+A1 <- solve(crossprod(X,X))
+A2 <- solve(crossprod(X1, X1) + crossprod(X2, X2))
+all.equal(A1, A2)
+n <- 100
+p <- 3
+X <- matrix(rnorm(n*p), nrow=n, ncol=p)
+ind <- sample(1:n, size=50)
+X1 <- X[ind,]
+X2 <- X[-ind,]
+A1 <- solve(crossprod(X,X))
+A2 <- solve(crossprod(X1, X1) + crossprod(X2, X2))
+all.equal(A1, A2)
+library("AFTrees", lib.loc="~/R/x86_64-pc-linux-gnu-library/3.4")
+n <- 500
+age <- runif(n)
+age <- sort(age)
+muvec <- muvec_trt <- rep(0, n)
+for(k in 1:n) {
+muvec[k] <- 1/2 + pnorm(5*(age[k] - .5))
+muvec_trt[k] <- .35 + muvec[k]
+}
+## generate responses without censoring
+a0 = muvec + rnorm(n)
+a1 = muvec_trt + rnorm(n)
+yy = c(a0, a1)
+Trt <- c(rep(0,n), rep(1,n))
+XX <- matrix(rep(age,2), ncol=1)
+aftFit <- IndivAFT(XX,exp(yy),status=rep(1,2*n),Trt=Trt,ndpost=500,nskip=500,printevery=100)
+aftFit2 <- IndivAFTNew(XX, exp(yy), status=rep(1,2*n), Trt=Trt, ndpost=500, nskip=500, printevery=100)
+library(AFTrees)
+aftFit2 <- IndivAFTNew(XX, exp(yy), status=rep(1,2*n), Trt=Trt, ndpost=500, nskip=500, printevery=100)
+library(AFTrees)
+aftFit2 <- IndivAFTNew(XX, exp(yy), status=rep(1,2*n), Trt=Trt, ndpost=500, nskip=500, printevery=100)
+library(AFTrees)
+aftFit2 <- IndivAFTNew(XX, exp(yy), status=rep(1,2*n), Trt=Trt, ndpost=500, nskip=500, printevery=100)
+table(Trt)

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\ntmp <- (var_cov%*%VV[j,])\n\naft_var[j] <- sum((var_cov%*%VV[j,])*VV[j,])\n\n\naft_var[j] <- sum((var_cov%*%VV[j,])*VV[j,])\n\n\n",
+    "created" : 1486441753931.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1217803165",
+    "id" : "C891C867",
+    "lastKnownWriteTime" : 107696272,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled25"
+    },
+    "relative_order" : 94,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

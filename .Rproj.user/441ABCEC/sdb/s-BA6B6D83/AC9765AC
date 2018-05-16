@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\n\nlibrary(bootruin)\nlibrary(AFTrees)\n\nload(\"~/personalized/Data/solvd_fit_log.RData\")\nload(\"~/personalized/Data/solvd_fit.RData\")\ndata(solvd_pt)\n\nnsamps <- nrow(obj_log$Theta)\nprop_benefitT <- prop_benefitS <- rep(0.0, nsamps)\nst <- solvd$study==\"SOLVD Treatment\"\nfor(k in 1:nsamps) {\n    prop_benefitT[k] <- mean(obj_log$Theta[k,st] > 0)/1.01\n    prop_benefitS[k] <- mean(obj_log$Theta[k,!st] > 0)/1.01\n}\n\nsummary(prop_benefitT)\nsummary(prop_benefitS)\n\npT <- pvaldens(prop_benefitT)\npS <- pvaldens(prop_benefitS) \n  \nx <- seq(0, .99, length=200)\ny0 <- pT(x)\ny1 <- pS(x)\n\n\npostscript(file=\"~/Presentations/ENAR16/Figures/prop_benefit.eps\", width=6.5, height=5.0, horizontal=FALSE)\npar(mfrow=c(1,1), mar=c(4.1, 4.1, 1, .25))\nplot(x, y0, type=\"n\", xlim=c(.4,1), las=1, xlab=\"Proportion Benefiting\", ylab=\"Density\")\nlines(x, y0, lwd=2)\nlines(x, y1, lwd=2, col=\"red\")\nlegend(\"topleft\", col=c(\"black\",\"red\"), legend=c(\"Treatment Trial\",\"Prevention Trial\"),bty=\"n\", lwd=3)\ndev.off()\n\n\nxx <- c(23, 13, 15, 12, 13, 7, 6, 4)\nnn <- c(31, 31, 20, 21, 16, 17, 9, 11)\ncountry <- c(\"US\",\"US\",\"UK/Belgium\",\"UK/Belgium\",\"Australia\",\"Australia\",\"Japan\",\"Japan\")\nTrt <- rep(c(\"EVARREST\", \"TachoSil\"), 4)\n\nLesko <- data.frame(xx=xx, nn=nn, country=country, Trt=Trt)\n\n\n\n\n\n\n\n\n",
+    "created" : 1521406094872.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3573785823",
+    "id" : "AC9765AC",
+    "lastKnownWriteTime" : 1493220162,
+    "last_content_update" : 1493220162,
+    "path" : "~/personalized/FinPaperGraphs/proportion_benefit.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 42,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
