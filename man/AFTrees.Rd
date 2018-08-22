@@ -1,7 +1,7 @@
 \name{AFTrees}
 \title{Accelerated Failure Regression Trees}
 \alias{AFTrees}
-\alias{plot.bart}
+\alias{plot.aftree}
 \description{
 Fits a Nonparametric Accelerated Failure Time Model
 }
@@ -17,7 +17,7 @@ AFTrees(
    printevery=100, keepevery=1, keeptrainfits=TRUE,
    usequants=TRUE, numcut=100, printcutoffs=0,
    verbose=TRUE)
-\method{plot}{bart}(
+\method{plot}{aftree}(
    x,
    plquants=c(.05,.95), cols =c('blue','black'),
    \dots)
@@ -151,11 +151,11 @@ AFTrees(
    }
 
    \item{x}{
-   Value returned by \code{bart} which contains the information to be plotted.
+   Value returned by \code{AFTree} which contains the information to be plotted.
    }
 
    \item{plquants}{
-   In the plots, beliefs about \eqn{f(x)} are indicated by plotting the
+   In the plots, beliefs about \eqn{m(x)} are indicated by plotting the
    posterior median and a lower and upper quantile.
    plquants is a double vector of length two giving the lower and upper quantiles.
    }
@@ -189,7 +189,7 @@ AFTrees(
    the corresponding \eqn{f(x)} on the vertical axis.
 
 
-   \code{bart} returns a list assigned class \sQuote{bart}.
+   \code{AFTree} returns a list assigned class \sQuote{aftree}.
    In the numeric \eqn{y} case, the list has components:
 
    \item{yhat.train}{
@@ -277,7 +277,7 @@ XX <- cbind(rep(age,2), Trt)
 system.time(aftFit <- AFTrees(XX, exp(yy),status=status,ndpost=500,nskip=500,printevery=100))
 
 ### Compute fitted expected log-survival for each treatment group
-muhat <- colMeans(aftFit$yhat.train)
+muhat <- colMeans(aftFit$m.train)
 
 ### Compare with true values
 

@@ -1,6 +1,6 @@
 useDynLib("AFTrees")
 
-export(AFTrees,pdbart,pd2bart,plot.bart,makeind,IndivAFT,IndivAFTNew, IndivAFTSeparate, SurvivalProb,ConcIndex, cv.AFTree, cv.IndivAFT)
+export(AFTrees,pdbart,pd2bart,plot.aftree,makeind,IndivAFT,IndivAFTNew, IndivAFTSeparate, SurvivalProb,ConcIndex, cv.AFTree, cv.IndivAFT)
 
 importFrom(nnet,class.ind)
 importFrom("graphics", "abline", "contour", "image", "lines", "par","plot", "title","points")
@@ -8,7 +8,7 @@ importFrom("stats", "lm", "pnorm", "quantile", "dnorm", "integrate", "median", "
 importFrom("utils", "combn")
 importFrom("survival", "survreg", "Surv", "survfit")
 
-S3method(plot, bart)
+S3method(plot, aftree)
 S3method(plot, pdbart)
 S3method(plot, pd2bart)
 S3method(plot, indivaft)

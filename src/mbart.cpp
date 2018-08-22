@@ -141,9 +141,9 @@ void mbart(int *iNumObs, int *iNumX, int *inrowTest,
       Rprintf("Prior:\n");
       Rprintf("\tk: %lf\n",kfac);
 
-      Rprintf("\tdegrees of freedom in sigma prior: %d\n",sigdf);
-      Rprintf("\tquantile in sigma prior: %lf\n",sigquant);
-   
+     // Rprintf("\tdegrees of freedom in sigma prior: %d\n",sigdf);
+    //  Rprintf("\tquantile in sigma prior: %lf\n",sigquant);
+
       Rprintf("\tpower and base for tree prior: %lf %lf\n",PriParams.power,PriParams.base);
       Rprintf("\tuse quantiles for rule cut points: %d\n",usequants);
       Rprintf("data:\n");
@@ -309,10 +309,9 @@ void mbart(int *iNumObs, int *iNumX, int *inrowTest,
 
    time_t tp;
    int time1 = time(&tp);
-   
-   
+
+
    // initialize mixture quantities
-  // int nclust=20;
    double* mass = new double[1];
    double* sig = new double[1];
    double* mixvals = new double[nclust];
@@ -334,7 +333,7 @@ void mbart(int *iNumObs, int *iNumX, int *inrowTest,
    int mixcnt = 0;
    int loccnt = 0;
    int masscnt = 0;
-   
+
    if(*verbose) Rprintf("Running mcmc loop:\n");
    for (int k=1;k<=ndPost;k++) {
       //if(k%printevery== 0) std::cout << "iteration: " << k << " (of " << ndPost << ")" << std::endl;
@@ -381,21 +380,21 @@ void mbart(int *iNumObs, int *iNumX, int *inrowTest,
          //daxpy(n, da, dx, inc, dy, inc) function returns constant times a vector plus a vector
          // n - length of vectors dx and dy, da is a scalar
          // function computes dy + da*dx and stores the result in dy.
- 
-         
+
+
          // Update cluster labels, Tabulate cluster countts, update mixture proportions and cluster locations
          if(non_par) {
               mix.updateLabels(labs, mixvals, locations, eps, sig, NumObs, nclust);
-              mix.tabCounts(cluster_counts, labs, NumObs, nclust); 
+              mix.tabCounts(cluster_counts, labs, NumObs, nclust);
               mix.updateMix(mixvals, mass, labs, cluster_counts, NumObs, nclust);
               mix.updateLocations(locations, mixvals, eps, labs, cluster_counts, sig, sigtau_sq, NumObs, nclust);
               mix.getIndivLocations(indiv_locations, locations, labs, NumObs, nclust);
-              mix.updateSigma(labs, locations, eps, sig, kappa, sigdf, NumObs, nclust); 
+              mix.updateSigma(labs, locations, eps, sig, kappa, sigdf, NumObs, nclust);
               mu.setSigma(sig[0]);  // what does this do?
-          
+
               // Impute censored values by simulating from truncated Normal.
               if(num_censored > 0) {
-                 truncNormImpute(Y, Yobserved, delta, mtotalfit, indiv_locations, sig, NumObs); 
+                 truncNormImpute(Y, Yobserved, delta, mtotalfit, indiv_locations, sig, NumObs);
               }
           }
           else {
@@ -403,9 +402,9 @@ void mbart(int *iNumObs, int *iNumX, int *inrowTest,
               sd.setData(NumObs,eps);
               sd.drawPost();
               mu.setSigma(sd.getS());
-              
+
               if(num_censored > 0) {
-                 truncNormImpute_SP(Y, Yobserved, delta, mtotalfit, sd.getS(), NumObs); 
+                 truncNormImpute_SP(Y, Yobserved, delta, mtotalfit, sd.getS(), NumObs);
               }
           }
       if(k%keepevery==0) {
@@ -450,8 +449,6 @@ void mbart(int *iNumObs, int *iNumX, int *inrowTest,
       Rprintf("(%d: %d) ",i,varcnt[i]);
       if(i%5 == 0) Rprintf("\n");
    }
-
-   Rprintf("\nDONE BART 11-2-2014\n\n");
    }
 
    //delete
