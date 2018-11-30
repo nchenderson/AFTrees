@@ -392,10 +392,10 @@ void mbart(int *iNumObs, int *iNumX, int *inrowTest,
               mix.updateSigma(labs, locations, eps, sig, kappa, sigdf, NumObs, nclust);
               mu.setSigma(sig[0]);  // what does this do?
 
-              for(int h=0; h < nclust; h++) {
-                    Rprintf("Cluster %d", h); 
-                    Rprintf(" Count %d\n", cluster_counts[h]);
-              }
+             // for(int h=0; h < nclust; h++) {
+             //        Rprintf("Cluster %d", h);
+             //        Rprintf(" Count %d\n", cluster_counts[h]);
+             //  }
               // Impute censored values by simulating from truncated Normal.
               if(num_censored > 0) {
                  truncNormImpute(Y, Yobserved, delta, mtotalfit, indiv_locations, sig, NumObs);

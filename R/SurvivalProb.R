@@ -8,7 +8,9 @@ SurvivalProb <- function(object, time.points=NULL, test.only=FALSE, train.only=F
      }
      if(is.null(time.points)) {
          log.times <- log(object$times)
-         time.points <- seq(min(log.times), max(log.times), length.out=11)
+         #qq <- quantiles(log.times)
+         qq <- c(min(log.times), quantile(log.times, probs=seq(.025,.975,length.out=10)), max(log.times))
+         time.points <- exp(qq)
      }
      if(is.null(object$m.test)) {
           train.only = TRUE
