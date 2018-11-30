@@ -5,17 +5,17 @@
 Survival Probabilities
 }
 \description{
-Computes P(T > t) for desired values of t
+Computes P(T > t|x) for a covariate vector x and desired values of t
 }
 \usage{
-SurvivalProb(obj, time.point)
+SurvivalProb(object, time.points=NULL, test.only=FALSE, train.only=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{obj}{
+  \item{object}{
 An object of class indivAFT
 }
-\item{time.point}{
+\item{time.points}{
 the point (or points) at which the survival probability is computed
 }
 }

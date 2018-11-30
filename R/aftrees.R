@@ -4,7 +4,7 @@ AFTrees = function(
    k=2.0,
    power=2.0, base=.95,
    nonparametric=TRUE,
-   ntree=200,
+   ntree=200, max.error.clust=200,
    ndpost=1000, nskip=100,
    printevery=100, keepevery=1, keeptrainfits=TRUE,
    usequants=TRUE, numcut=100, printcutoffs=0,
@@ -92,7 +92,9 @@ AFTrees = function(
    ## put sigquant argument here
    kappa <- FindKappa(q=sigquant, sigsq.hat=sigest*sigest, nu=sigdf)
 
-   nclust = 50
+   #nclust = 50
+   #nclust = 200
+   nclust = max.error.clust
    npind = ifelse(nonparametric, 1, 0)
    cres = .C('mbart',as.integer(nrow(x.train)), as.integer(ncol(x.train)), as.integer(nrow(x.test)),
                    as.double(x.train), as.double(y_centered_log),
