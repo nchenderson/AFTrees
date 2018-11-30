@@ -9,7 +9,6 @@ importFrom("utils", "combn")
 importFrom("survival", "survreg", "Surv", "survfit")
 
 S3method(plot, aftree)
-S3method(plot, pdbart)
 S3method(plot, pd2bart)
 S3method(plot, indivaft)
 S3method(plot, aftsurvcurves)
