@@ -22,7 +22,7 @@ the point (or points) at which the survival probability is computed
 \value{
 A list with the following two components
   \item{Surv}{a vector or matrix of survival probabilities}
-   \item{time.point}{the time point entered}
+   \item{time.points}{the time point entered}
 }
 \author{
 Nicholas Henderson

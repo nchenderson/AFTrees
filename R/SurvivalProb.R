@@ -1,4 +1,5 @@
-SurvivalProb <- function(object, time.points=NULL, test.only=FALSE, train.only=FALSE) {
+SurvivalProb <- function(object, time.points=NULL, xind.train=NULL, xind.test=NULL,
+                         credible=FALSE, test.only=FALSE, train.only=FALSE) {
      ### First check that all elements of time.point > 0
      if(sum(time.points <= 0)) {
          stop("All time points must be positive")
@@ -9,7 +10,7 @@ SurvivalProb <- function(object, time.points=NULL, test.only=FALSE, train.only=F
      if(is.null(time.points)) {
          log.times <- log(object$times)
          #qq <- quantiles(log.times)
-         qq <- c(min(log.times), quantile(log.times, probs=seq(.025,.975,length.out=10)), max(log.times))
+         qq <- c(min(log.times), quantile(log.times, probs=seq(.025,.975,length.out=30)), max(log.times))
          time.points <- exp(qq)
      }
      if(is.null(object$m.test)) {
@@ -25,11 +26,14 @@ SurvivalProb <- function(object, time.points=NULL, test.only=FALSE, train.only=F
 
      if(test.only) {
          ntest <- ncol(object$m.test)
+         if(is.null(xind.test)) {
+              xind.test <- 1:ntest
+         }
          if(length(time.points) > 1) {
              SS.test <- matrix(0.0, nrow=ntest, ncol=ngrid)
 
          ### TauMat should be nsamples x nclusters
-             for(i in 1:ntest) {
+             for(i in xind.test) {
                  for(k in 1:ngrid) {
                      Amat <- (log.time.points[k] - object$locations - object$m.test[,i])/object$sigma
                      SS.test[i,k] <- sum(pnorm(Amat, lower.tail=FALSE)*object$mix.prop)/nsamples
@@ -39,18 +43,21 @@ SurvivalProb <- function(object, time.points=NULL, test.only=FALSE, train.only=F
          }
          else {
              SS.test <- rep(0.0, ntest)
-             for(i in 1:ntest) {
+             for(i in xind.test) {
                   Amat <- (log.time.points - object$locations - object$m.test[,i])/object$sigma
                   SS.test[i] <- sum(pnorm(Amat, lower.tail=FALSE)*object$mix.prop)/nsamples
              }
          }
          SS.train <- SS.train.mean <- NULL
      } else if(train.only) {
+        if(is.null(xind.train)) {
+          xind.train <- 1:ntrain
+        }
          if(length(time.points) > 1) {
            SS.train <- matrix(0.0, nrow=nsubjects, ncol=ngrid)
 
            ### TauMat should be nsamples x nclusters
-            for(i in 1:nsubjects) {
+            for(i in xind.train) {
               for(k in 1:ngrid) {
                  Amat <- (log.time.points[k] - object$locations - object$m.train[,i])/object$sigma
                  SS.train[i,k] <- sum(pnorm(Amat, lower.tail=FALSE)*object$mix.prop)/nsamples
@@ -60,7 +67,7 @@ SurvivalProb <- function(object, time.points=NULL, test.only=FALSE, train.only=F
          }
          else {
             SS.train <- rep(0.0, nsubjects)
-            for(i in 1:nsubjects) {
+            for(i in xind.train) {
                Amat <- (log.time.points - object$locations - object$m.train[,i])/object$sigma
                SS.train[i] <- sum(pnorm(Amat, lower.tail=FALSE)*object$mix.prop)/nsamples
             }
@@ -69,19 +76,24 @@ SurvivalProb <- function(object, time.points=NULL, test.only=FALSE, train.only=F
          SS.test <- SS.test.mean <- NULL
      } else if(!train.only & !test.only) {
         ntest <- ncol(object$m.test)
-
+        if(is.null(xind.train)) {
+          xind.train <- 1:ntrain
+        }
+        if(is.null(xind.test)) {
+          xind.test <- 1:ntest
+        }
         if(length(time.points) > 1) {
              SS.test <- matrix(0.0, nrow=ntest, ncol=ngrid)
              SS.train <- matrix(0.0, nrow=ntrain, ncol=ngrid)
 
            ### TauMat should be nsamples x nclusters
-            for(i in 1:ntest) {
+            for(i in xind.test) {
               for(k in 1:ngrid) {
                   Amat <- (log.time.points[k] - object$locations - object$m.test[,i])/object$sigma
                   SS.test[i,k] <- sum(pnorm(Amat, lower.tail=FALSE)*object$mix.prop)/nsamples
               }
             }
-            for(i in 1:nsubjects) {
+            for(i in xind.train) {
               for(k in 1:ngrid) {
                   Amat <- (log.time.points[k] - object$locations - object$m.train[,i])/object$sigma
                   SS.train[i,k] <- sum(pnorm(Amat, lower.tail=FALSE)*object$mix.prop)/nsamples
@@ -92,12 +104,12 @@ SurvivalProb <- function(object, time.points=NULL, test.only=FALSE, train.only=F
          }
          else {
             SS.test <- rep(0.0, ntest)
-            for(i in 1:ntest) {
+            for(i in xind.test) {
                 Amat <- (log.time.points - object$locations - object$m.test[,i])/object$sigma
                 SS.test[i] <- sum(pnorm(Amat, lower.tail=FALSE)*object$mix.prop)/nsamples
             }
             SS.train <- rep(0.0, nsubjects)
-            for(i in 1:nsubjects) {
+            for(i in xind.train) {
                 Amat <- (log.time.points - object$locations - object$m.train[,i])/object$sigma
                 SS.train[i] <- sum(pnorm(Amat, lower.tail=FALSE)*object$mix.prop)/nsamples
             }
