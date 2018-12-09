@@ -15,21 +15,19 @@
 
 Cstat <- function(mydata, risk.score, tau) 
 {
-    cens <- kmcens(mydata[, 1], mydata[, 2], tau)  ### look up this function
+    cens <- KMEstCens(mydata[, 1], mydata[, 2], tau)  ### look up this function
     GXi <- cens$surv[match(mydata[, 1], cens$distinct, nomatch = 1)]
     Wi <- (1/GXi/GXi) * mydata[, 2] * as.numeric(mydata[, 1] < tau)*mydata[,2]
 
-    rs = risk.score
    
-    cstat = concordance(mydata[, 1], mydata[, 2], rs, Wi)
-    Z = list()
-    Z$Dhat = cstat
-    Z$rs = rs
-    Z$cens.surv = cens$surv
-    Z$cens.psii = cens$psii
-    Z$distinct = cens$distinct
-    Z$wt = Wi
-    return(Z)
+    cstat = concordance(mydata[, 1], mydata[, 2], risk.score, Wi)
+    ans <- list()
+    ans$Dhat <- cstat
+    ans$risk.score <- risk.score
+    ans$cens.surv <- cens$surv
+    ans$distinct <- cens$distinct
+    ans$wt = Wi
+    return(ans)
 }
 
 #> conc
@@ -41,10 +39,27 @@ Cstat <- function(mydata, risk.score, tau)
 #        CSTAT = as.double(0), PACKAGE = "survC1")
 #    return(out$CSTAT)
 #}
-
+KMEstCens <- function (time, status, tau)  {
+    distinct <- unique(sort(time))
+    t <- length(distinct)
+    n <- length(time)
+    surv <- rep(0, t)
+    yi <- sum(as.numeric(time >= distinct[1]))
+    di <- sum(as.numeric(time == distinct[1] & status == 0))
+    surv[1] <- 1 * (1 - di/yi)
+    for (i in 2:t) {
+        yi <- sum(as.numeric(time >= distinct[i]))
+        di <- sum(as.numeric(time == distinct[i] & status == 0))
+        surv[i] <- surv[i - 1] * (1 - di/yi)
+    }
+    surv[2:t] <- surv[1:(t - 1)]
+    surv[1] <- 1
+    return(list(surv = surv, distinct = distinct))
+}
 
 concordance <- function(time, status, rs, weight) {
      ### rs- risk score
+     ### Need to write a C++ function to do this!
      
       n <- length(time)
       USEP=0
