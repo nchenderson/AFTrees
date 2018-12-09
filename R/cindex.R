@@ -13,20 +13,17 @@
 #   return(ans)
 #}
 
-Cstat <- function(mydata, risk.score, tau) 
+Cstat <- function(times, status, risk.score, tau) 
 {
-    cens <- KMEstCens(mydata[, 1], mydata[, 2], tau)  ### look up this function
-    GXi <- cens$surv[match(mydata[, 1], cens$distinct, nomatch = 1)]
-    Wi <- (1/GXi/GXi) * mydata[, 2] * as.numeric(mydata[, 1] < tau)*mydata[,2]
+    cens <- KMEstCens(times, status, tau)  ### look up this function
+    GXi <- cens$surv[match(times, cens$distinct, nomatch = 1)]
+    Wi <- (1/GXi/GXi) * status * as.numeric(times < tau)
 
    
-    cstat = concordance(mydata[, 1], mydata[, 2], risk.score, Wi)
+    cstat = concordance(times, status, risk.score, Wi)
     ans <- list()
     ans$Dhat <- cstat
-    ans$risk.score <- risk.score
     ans$cens.surv <- cens$surv
-    ans$distinct <- cens$distinct
-    ans$wt = Wi
     return(ans)
 }
 

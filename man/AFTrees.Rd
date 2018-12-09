@@ -36,12 +36,12 @@ AFTrees(
    }
 
    \item{y.train}{
-   log of follow-up time for right censored data
+    A vector follow-up times
    }
 
    \item{status}{
-   A vector of censoring indicators; status = 1 indicates that the event was observed
-   while status = 0 indicates that the observation was right-censored.
+    A vector of censoring indicators; status = 1 indicates that the event was observed
+    while status = 0 indicates the observation was right-censored.
    }
    \item{x.test}{
    Explanatory variables for test (out of sample) data.\cr
