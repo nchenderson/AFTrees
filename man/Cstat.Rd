@@ -8,7 +8,7 @@ C-statistic
 Uno's C-statistic that is adjusted for censoring
 }
 \usage{
-Cstat(mydata, risk.score, tau)
+Cstat(times, status, risk.score, tau)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -23,7 +23,8 @@ Cstat(mydata, risk.score, tau)
 A vector of risk scores. This should have the same length as both \code{times} and \code{status}
 }
   \item{tau}{
-A truncation time
+A truncation time point. The c-statistic measures predictive performance of the model over
+the time interval (0, tau).
 }
 }
 \details{
@@ -31,9 +32,8 @@ A truncation time
 }
 \value{
 A list with the following two components
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+  \item{Chat}{The c-statistic}
+  \item{comp2 }{The estimated values of the censoring survival function}
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -51,6 +51,7 @@ A list with the following two components
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+### Use the function RiskScore for this example
 a=2
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

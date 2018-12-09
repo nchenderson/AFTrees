@@ -36,7 +36,7 @@ Cstat <- function(times, status, risk.score, tau)
 #        CSTAT = as.double(0), PACKAGE = "survC1")
 #    return(out$CSTAT)
 #}
-KMEstCens <- function (time, status, tau)  {
+KMEstCens <- function(time, status, tau)  {
     distinct <- unique(sort(time))
     t <- length(distinct)
     n <- length(time)
