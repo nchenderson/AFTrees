@@ -4,7 +4,7 @@ Title: Accelerated Failure Trees
 Version: 0.6.4
 Date: 2019-05-15
 Author: Nicholas Henderson
-Maintainer: Nicholas Henderson <nhender5@jhmi.edu>
+Maintainer: Nicholas Henderson <nchender@umich.edu>
 Imports: nnet, survival
 Description: This package fits AFT models with an additive tree model for the regression function and a DP mixture for the error distribution.
 License: GPL-2
