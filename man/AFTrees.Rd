@@ -31,8 +31,6 @@ AFTrees(
    Note that q dummies are created if q>2 and
    one dummy is created if q=2, where q is the number of levels of the factor.
    \code{makeind} is used to generate the dummies.
-   \code{bart} will generate draws of \eqn{f(x)} for each \eqn{x}
-   which is a row of x.train.
    }
 
    \item{y.train}{

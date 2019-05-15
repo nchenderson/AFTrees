@@ -28,7 +28,7 @@ IndivAFT = function(
       x.train <- cbind(x.train, Trt)
       x.test <- rbind(t1, t2)
    }
-   
+
    #check input arguments:
    if((!is.matrix(x.train)) || (typeof(x.train)!="double")) stop("argument x.train must be a double matrix")
    if((!is.matrix(x.test)) || (typeof(x.test)!="double")) stop("argument x.test must be a double matrix")
@@ -60,23 +60,23 @@ IndivAFT = function(
    if(power <= 0) stop("power must be positive")
    if(base <= 0) stop("base must be positive")
 
-   null_lm <- survreg(Surv(y.train, status) ~ 1, dist="lognormal")   
+   null_lm <- survreg(Surv(y.train, status) ~ 1, dist="lognormal")
    null_sig <- null_lm$scale
    null_intercept <- null_lm$coefficients
-   
+
    y_centered_log <- log(y.train) - null_intercept
    imr <- dnorm(log(y.train), mean=null_intercept, sd=null_sig)/pnorm(log(y.train), mean=null_intercept, sd=null_sig, lower.tail=FALSE)
-   #y_unobs <- y.train*exp(.02*(1-status)*null_sig)   ### rough, estimate of unobserved survival times 
+   #y_unobs <- y.train*exp(.02*(1-status)*null_sig)   ### rough, estimate of unobserved survival times
    y_unobs <- exp( status*log(y.train) + (1 - status)*null_sig + (1 - status)*imr)
-   
+
    #y.train.log = log(y.train)  ### transform to log-survival times
    rgy = range(log(y_unobs))
    zeta_tmp <- rgy[2] - rgy[1]
    zeta <- 4*null_sig
-   print(c(zeta,zeta_tmp))
+   #print(c(zeta,zeta_tmp))
    #aa = (rgy[1] + rgy[2])/(2*(rgy[2] - rgy[1]))
 
- 
+
    # Need to include the survival package
    if (is.na(sigest)) {
        #templm = lm(y~x.train)
@@ -92,7 +92,7 @@ IndivAFT = function(
    nctot = ncskip + ncpost
    totnd = keepevery*nctot
 
-   nclust = 100
+   nclust = 200
    kappa <- FindKappa(q=sigquant, sigsq.hat=sqrt(sigest), nu=sigdf)
 
    npind = ifelse(nonparametric, 1, 0)
@@ -124,16 +124,16 @@ IndivAFT = function(
        # put sigest on the original y scale for output purposes
        sigest = sigest
 
-   yhat.train = yhat.test = yhat.train.mean = yhat.test.mean = NULL
+   m.train = m.test = m.train.mean = m.test.mean = NULL
    varcount = NULL
 
    if (keeptrainfits) {
-      yhat.train = matrix(cres$trdraw,nrow=nctot,byrow=T)[(ncskip+1):nctot,]
-      yhat.train = yhat.train + null_intercept
-      yhat.train.mean <- colMeans(yhat.train)
+      m.train = matrix(cres$trdraw,nrow=nctot,byrow=T)[(ncskip+1):nctot,]
+      m.train = m.train + null_intercept
+      m.train.mean <- colMeans(m.train)
    }
-   yhat.test = matrix(cres$tedraw,nrow=nctot,byrow=T)[(ncskip+1):nctot,]
-   yhat.test = yhat.test + null_intercept
+   m.test = matrix(cres$tedraw,nrow=nctot,byrow=T)[(ncskip+1):nctot,]
+   m.test = m.test + null_intercept
 
    mix.prop = matrix(cres$mixdraw,nrow=nctot,byrow=T)[(ncskip+1):nctot,]
    locations = matrix(cres$locdraw,nrow=nctot,byrow=T)[(ncskip+1):nctot,]
@@ -142,23 +142,23 @@ IndivAFT = function(
    varcount = matrix(cres$vcdraw,nrow=nctot,byrow=T)[(ncskip+1):nctot,]
 
    npatients <- nrow(x.train)
-   nsamps <- nrow(yhat.train)
+   nsamps <- nrow(m.train)
    ThetaMat <- matrix(0, nrow=nsamps, ncol=npatients)
    Theta.test <- NULL
-   
+
    if(scale=="log") {
        for(k in 1:npatients) {
            if(Trt[k]==1) {
-                ThetaMat[,k] <- yhat.train[,k] - yhat.test[,k]
+                ThetaMat[,k] <- m.train[,k] - m.test[,k]
            }
            else {
-               ThetaMat[,k] <- yhat.test[,k] - yhat.train[,k]
+               ThetaMat[,k] <- m.test[,k] - m.train[,k]
            }
        }
        if(n.test > 0) {
            Theta.test <- matrix(0, nrow=nsamps, ncol=n.test)
            for(h in 1:n.test) {
-              Theta.test[,h] <- yhat.test[,npatients + h] - yhat.test[,npatients + h + n.test]
+              Theta.test[,h] <- m.test[,npatients + h] - m.test[,npatients + h + n.test]
            }
        }
    }
@@ -167,10 +167,10 @@ IndivAFT = function(
       mgfs <- 1
       for(k in 1:npatients) {
         if(Trt[k]==1) {
-           ThetaMat[,k] <- mgfs*(exp(yhat.train[,k] - yhat.test[,k]))
+           ThetaMat[,k] <- mgfs*(exp(m.train[,k] - m.test[,k]))
         }
         else {
-           ThetaMat[,k] <- mgfs*(exp(yhat.test[,k] - yhat.train[,k]))
+           ThetaMat[,k] <- mgfs*(exp(m.test[,k] - m.train[,k]))
         }
       }
    }
@@ -180,10 +180,10 @@ IndivAFT = function(
       first.sigma=first.sigma,
       sigma=sigma,
       sigest=sigest,
-      yhat.train=yhat.train,
-      yhat.train.mean=yhat.train.mean,
-      yhat.test=yhat.test,
-      yhat.test.mean=yhat.test.mean,
+      m.train=m.train,
+      m.train.mean=m.train.mean,
+      m.test=m.test,
+      m.test.mean=m.test.mean,
       varcount=varcount,
       y = y.train,
       mix.prop=mix.prop,
