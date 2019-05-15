@@ -1,8 +1,8 @@
 Package: AFTrees
 Type: Package
 Title: Accelerated Failure Trees
-Version: 0.6.3
-Date: 2018-11-26
+Version: 0.6.4
+Date: 2019-05-15
 Author: Nicholas Henderson
 Maintainer: Nicholas Henderson <nhender5@jhmi.edu>
 Imports: nnet, survival
