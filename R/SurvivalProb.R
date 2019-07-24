@@ -9,7 +9,6 @@ SurvivalProb <- function(object, time.points=NULL, xind.train=NULL, xind.test=NU
      }
      if(is.null(time.points)) {
          log.times <- log(object$times)
-         #qq <- quantiles(log.times)
          qq <- c(min(log.times), quantile(log.times, probs=seq(.025,.975,length.out=30)), max(log.times))
          time.points <- exp(qq)
      }
@@ -51,6 +50,7 @@ SurvivalProb <- function(object, time.points=NULL, xind.train=NULL, xind.test=NU
          SS.train <- SS.train.mean <- NULL
      } else if(train.only) {
         if(is.null(xind.train)) {
+          ntrain <- length(object$m.train)
           xind.train <- 1:ntrain
         }
          if(length(time.points) > 1) {

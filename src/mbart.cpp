@@ -319,7 +319,7 @@ void mbart(int *iNumObs, int *iNumX, int *inrowTest,
    double* indiv_locations = new double[NumObs+1]; //indeces start from 1
    double* locations = new double[nclust];
    int* cluster_counts = new int[nclust];
-   double uu;
+  // double uu;
    for(int h=0; h < nclust; h++) {
        mixvals[h] = 1/nclust;
        locations[h] = rnorm(0.0, 1.1);
@@ -327,7 +327,6 @@ void mbart(int *iNumObs, int *iNumX, int *inrowTest,
    for(int h=0; h <= NumObs; h++) {
        indiv_locations[h] = 0.0;
    }
-   int ndensities = 1;
    mass[0] = 10.0;
    sig[0] = 1.0;
    int mixcnt = 0;

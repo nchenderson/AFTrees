@@ -8,15 +8,33 @@ Survival Probabilities
 Computes P(T > t|x) for a covariate vector x and desired values of t
 }
 \usage{
-SurvivalProb(object, time.points=NULL, test.only=FALSE, train.only=FALSE)
+SurvivalProb(
+             object, time.points=NULL, xind.train=NULL,
+             xind.test=NULL, credible=FALSE, test.only=FALSE,
+             train.only=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{object}{
-An object of class indivAFT
+An object of class aftree.
 }
 \item{time.points}{
-the point (or points) at which the survival probability is computed
+the point (or points) at which the survival probability is computed.
+}
+\item{xind.train}{
+Indices of observations from the training data that should be computed.
+}
+\item{xind.test}{
+Indices of observations from the test data that should be computed.
+}
+\item{credible}{
+Whether or not credible bands should also be computed.
+}
+\item{test.only}{
+Whether or not only data from the test set should be computed.
+}
+\item{train.only}{
+Whether or not only data from the training set should be computed.
 }
 }
 \value{

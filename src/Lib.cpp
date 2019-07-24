@@ -86,7 +86,7 @@ void Lib::sortedUnique(int n, double *x, Vec& uv)
 
    //get unique values of xv into uv
    uv.push_back(xv[0]);
-   vec_sz nu = 1;
+   //vec_sz nu = 1;
    double ov = uv[0];
    for(vec_sz i=1;i<nv;i++) {
       if(xv[i] != ov) {
@@ -111,7 +111,7 @@ double Lib::sdev(const Vec& x)
 }
 void Lib::acov(Vec& x,int nl, Vec& acov, bool cor)
 {
-        typedef Vec::size_type ST;
+      //  typedef Vec::size_type ST;
         double c;
         int n = (int)x.size();
         double m = mean(x);

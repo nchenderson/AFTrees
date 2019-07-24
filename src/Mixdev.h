@@ -16,8 +16,7 @@ public:
 	    // Also need residuals, locations and sig!!!
 	    // function to update cluster labels
 	    // Remember that rr has nobs + 1 elements and starts from index 1.
-	    double pp, ptot, pcum, uu;
-	    int tmp;
+	    double ptot, pcum, uu;
 	    int count;
 	    for(int i=0; i < nobs; i++) {
 	        ptot = 0.0;
@@ -36,7 +35,7 @@ public:
 	             count = count + 1;
 	        }
 	        labels[i] = count;
-	     }   
+	     }
 	}
 	void tabCounts(int*nn, int* labels, int nobs, int nclust) {
 	     for(int h=0; h < nclust; h++) {
@@ -47,13 +46,13 @@ public:
       //   Rprintf("Cluster 2: %d \n", nn[1]);
  	}
     void updateMix(double* mix_prop, double* mass, int* labels, int* nn, int nobs, int nclust)
-	{    
+	{
 	     // function to update mixture proportions and mass parameter.
 	     double Vold, Vnew, log_mix_prop, Vcum;
 	     double shape1, shape2;
 	     double gam_shape, gam_scale, tmp;
 	     int ncum;
-         
+
          ncum = std::accumulate(nn + 1,nn + nclust,0);
          shape1 = nn[0] + 1.0;
          shape2 = mass[0] + ncum;
@@ -75,7 +74,7 @@ public:
              mix_prop[h] = exp(log_mix_prop);
          }
          mix_prop[nclust - 1] = 1.0 - std::accumulate(mix_prop,mix_prop + nclust - 1,0.0);
-         
+
          gam_shape = psi1 + nclust - 1;
          gam_scale = 1/(psi2 - Vcum);
          mass[0] = rgamma(gam_shape, gam_scale);
@@ -94,26 +93,26 @@ public:
 	             else {
 	                 dummy_bool = 0.0;
 	             }
-	             clust_sum += dummy_bool*rr[i+1]; 
+	             clust_sum += dummy_bool*rr[i+1];
 	         }
-	         wts = prior_sigsq/(prior_sigsq*nn[h] + sigsq);  
+	         wts = prior_sigsq/(prior_sigsq*nn[h] + sigsq);
 	         post_mean = wts*clust_sum;
              post_var = sigsq*wts;
              post_sd = sqrt(post_var);
              locations[h] = rnorm(post_mean, post_sd);
-         }    
+         }
          // Normalize the locations
          muG = 0.0;
          for(int h=0; h < nclust; h++) {
              muG = muG + mix_prop[h]*locations[h];
-         }      
+         }
          for(int h=0; h < nclust; h++) {
              locations[h] = locations[h] - muG;
          }
 	}
 	void getIndivLocations(double* indiv_locations, double* locations, int* labels, int nobs, int nclust)
 	{
-	      double dum_location;
+	      double dum_location=0.0;
 	      // index of indiv_locations starts from 1.
 	      for(int i=0; i < nobs; i++) {
 	           // find cluster observation i belongs to
@@ -126,7 +125,7 @@ public:
 	           indiv_locations[i+1] = dum_location;
 	       }
 	}
-	void updateSigma(int* labels, double* locations, double* rr, double* sig, double kappa, int sigdf, int nobs, int nclust) 
+	void updateSigma(int* labels, double* locations, double* rr, double* sig, double kappa, int sigdf, int nobs, int nclust)
 	{
           double ss_hat = 0.0;
           double wshape, wscl;
