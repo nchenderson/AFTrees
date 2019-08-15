@@ -1,11 +1,11 @@
 Package: AFTrees
 Type: Package
 Title: Accelerated Failure Trees
-Version: 0.6
-Date: 2018-3-1
+Version: 0.6.5
+Date: 2019-07-23
 Author: Nicholas Henderson
-Maintainer: Nicholas Henderson <nhender5@jhmi.edu>
+Maintainer: Nicholas Henderson <nchender@umich.edu>
 Imports: nnet, survival
-Description: Fits AFT models with a DP mixture for the error distribution
+Description: Fits AFT models that assume an additive tree model for the regression function and a DP mixture for the residual distribution.
 License: GPL-2
 LazyData: TRUE
