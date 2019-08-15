@@ -12,7 +12,7 @@ AFTrees(
    k=2.0,
    power=2.0, base=.95,
    nonparametric=TRUE,
-   ntree=200,
+   ntree=200, max.error.clust=200,
    ndpost=1000, nskip=100,
    printevery=100, keepevery=1, keeptrainfits=TRUE,
    usequants=TRUE, numcut=100, printcutoffs=0,
@@ -32,11 +32,9 @@ AFTrees(
    one dummy is created if q=2, where q is the number of levels of the factor.
    \code{makeind} is used to generate the dummies.
    }
-
    \item{y.train}{
     A vector follow-up times
    }
-
    \item{status}{
     A vector of censoring indicators; status = 1 indicates that the event was observed
     while status = 0 indicates the observation was right-censored.
@@ -46,16 +44,13 @@ AFTrees(
    Should have same structure as x.train.\cr
    \code{bart} will generate draws of \eqn{f(x)} for each \eqn{x} which is a row of x.test.
    }
-
    \item{sigest}{
    Rough estimate for the error standard deviation.
    If sigest=NA then this will be calculated.
    }
-
    \item{sigdf}{
    Degrees of freedom for error variance prior.
    }
-
    \item{sigquant}{
    The quantile of the prior that the rough estimate (see sigest) is placed at.
    The closer the quantile is to 1,
@@ -63,7 +58,6 @@ AFTrees(
    on error standard deviations (\eqn{\sigma}{sigma}) less than the rough estimate.
    Not used if y is binary.
    }
-
    \item{k}{
    For numeric y,
    k is the number of prior standard deviations \eqn{E(Y|x) = f(x)} is away from +/-.5.
@@ -72,34 +66,30 @@ AFTrees(
    k is the number of prior standard deviations \eqn{f(x)} is away from +/-3.
    In both cases, the bigger k is, the more conservative the fitting will be.
    }
-
    \item{power}{
    Power parameter for tree prior.
    }
-
    \item{base}{
    Base parameter for tree prior.
    }
-
    \item{nonparametric}{
    An indicator of whether to use a nonparametric vs. semi-parametric fit
    }
    \item{ntree}{
    The number of trees in the sum.
    }
-
+   \item{max.error.clust}{
+     The maximum number of clusters (or mixture components) that the error distribution may have.
+   }
    \item{ndpost}{
    The number of posterior draws after burn in, ndpost/keepevery will actually be returned.
    }
-
    \item{nskip}{
    Number of MCMC iterations to be treated as burn in.
    }
-
    \item{printevery}{
    As the MCMC runs, a message is printed every printevery draws.
    }
-
    \item{keepevery}{
    Every keepevery draw is kept to be returned to the user.\cr
    A \dQuote{draw} will consist of values of the error standard deviation (\eqn{\sigma}{sigma})
@@ -107,11 +97,9 @@ AFTrees(
    at \eqn{x} = rows from the train(optionally) and test data, where \eqn{f^*}{f*} denotes
    the current draw of \eqn{f}.
    }
-
    \item{keeptrainfits}{
    If true the draws of \eqn{f(x)} for \eqn{x} = rows of x.train are returned.
    }
-
    \item{usequants}{
    Decision rules in the tree are of the form
    \eqn{x \le c}{x <= c}  vs. \eqn{x > c}
@@ -125,7 +113,6 @@ AFTrees(
    range of values taken on by the corresponding
    column of x.train.
    }
-
    \item{numcut}{
    The number of possible values of c (see usequants).
    If a single number if given, this is used for all variables.
@@ -137,58 +124,41 @@ AFTrees(
    column of x.train.  If usequants is true, then  min(numcut, the number of unique values in the
    corresponding columns of x.train - 1) c values are used.
    }
-
    \item{printcutoffs}{
    The number of cutoff rules c to printed to screen before the MCMC is run.
    Give a single integer, the same value will be used for all variables.
    If 0, nothing is printed.
    }
-
    \item{verbose}{
    Logical, if FALSE supress printing.
    }
-
    \item{x}{
    Value returned by \code{AFTree} which contains the information to be plotted.
    }
-
    \item{plquants}{
    In the plots, beliefs about \eqn{m(x)} are indicated by plotting the
    posterior median and a lower and upper quantile.
    plquants is a double vector of length two giving the lower and upper quantiles.
    }
-
    \item{cols}{
    Vector of two colors.  First color is used to plot the median of \eqn{f(x)} and
    the second color is used to plot the lower and upper quantiles.
    }
-
    \item{\dots}{
    Additional arguments passed on to plot.
    }
 }
 \details{
-   BART is an Bayesian MCMC method.
+   The aftrees function fits an Accelerated Failure Time (AFT) model where
+   the regression function is modeled with Bayesian Additive Regression
+   Trees (BART) while the residual distribution is modeled nonparametrically.
+   Computation is done via MCMC.
    At each MCMC interation, we produce a draw from the joint posterior
-   \eqn{(f,\sigma) | (x,y)}{(f,sigma) \| (x,y)} in the numeric \eqn{y} case
-   and just \eqn{f} in the binary \eqn{y} case.
-
-   Thus, unlike a lot of other modelling methods in R, we do not produce a single model object
-   from which fits and summaries may be extracted.  The output consists of values
-   \eqn{f^*(x)}{f*(x)} (and \eqn{\sigma^*}{sigma*} in the numeric case) where * denotes a particular draw.
-   The \eqn{x} is either a row from the training data (x.train) or the test data (x.test).
+   \eqn{(m,f) | (x,y)}{(f,sigma) \| (x,y)}.
 }
 \value{
-   The \code{plot} method sets mfrow to c(1,2) and makes two plots.\cr
-   The first plot is the sequence of kept draws of \eqn{\sigma}{sigma}
-   including the burn-in draws.  Initially these draws will decline as BART finds fit
-   and then level off when the MCMC has burnt in.\cr
-   The second plot has \eqn{y} on the horizontal axis and posterior intervals for
-   the corresponding \eqn{f(x)} on the vertical axis.
-
-
    \code{AFTree} returns a list assigned class \sQuote{aftree}.
-   In the numeric \eqn{y} case, the list has components:
+   The list has the following components:
 
    \item{yhat.train}{
    A matrix with (ndpost/keepevery) rows and nrow(x.train) columns.
@@ -217,21 +187,12 @@ AFTrees(
    The input dependent vector of values for the dependent variable.\cr
    This is used in plot.bart.
    }
-
-   In the binary \eqn{y} case, the returned list has the components
-   yhat.train, yhat.test, and varcount as above.  In addition the list
-   has a binaryOffset component giving the value used.
-
-   Note that in the binary \eqn{y}, case yhat.train and yhat.test are
-   \eqn{f(x)} + binaryOffset.  If you want draws of the probability
-   \eqn{P(Y=1 | x)} you need to apply the normal cdf (\code{pnorm})
-   to these values.
 }
 \author{
 Nicholas Henderson
 }
 \seealso{
-\code{\link{pdbart}}
+\code{\link{IndivAFT}}
 }
 \examples{
 
