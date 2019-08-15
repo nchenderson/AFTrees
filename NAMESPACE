@@ -2,7 +2,6 @@ useDynLib("AFTrees")
 
 export(AFTrees,IndivAFT,IndivAFTNew, IndivAFTSeparate, SurvivalProb,Cstat, cv.AFTree, cv.IndivAFT, RiskScore)
 
-importFrom(nnet, class.ind)
 importFrom("graphics", "abline", "contour", "image", "lines", "par","plot", "title","points")
 importFrom("stats", "lm", "pnorm", "quantile", "dnorm", "integrate", "median", "uniroot")
 importFrom("utils", "combn")

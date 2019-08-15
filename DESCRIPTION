@@ -5,7 +5,7 @@ Version: 0.6.5
 Date: 2019-07-24
 Author: Nicholas Henderson
 Maintainer: Nicholas Henderson <nchender@umich.edu>
-Imports: nnet, survival
+Imports: survival
 Description: Fits AFT models that assume an additive tree model for the regression function and a DP mixture for the residual distribution.
 License: GPL-2
 LazyData: TRUE
