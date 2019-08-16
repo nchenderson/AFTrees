@@ -444,7 +444,8 @@ void mbart(int *iNumObs, int *iNumX, int *inrowTest,
       if(i%5 == 0) Rprintf("\n");
    }
    }
-
+   Rprintf("\n\n");
+   
    //delete
    //To delete: Yobserved, delta, mixvals, locations, indiv_locations, cluster_counts
    if(nrowTest) {
