@@ -5,29 +5,29 @@ AFTrees = function(
    power=2.0, base=.95,
    nonparametric=TRUE,
    ntree=200, max.error.clust=200,
-   ndpost=1000, nskip=100,
+   ndpost=1000,  nskip=100,
    printevery=100, keepevery=1, keeptrainfits=TRUE,
-   usequants=TRUE, numcut=100, printcutoffs=0,
-   verbose=TRUE
-)
-{
+   keepburnin=FALSE, usequants=TRUE, numcut=100, 
+   printcutoffs=0, verbose=TRUE) {
 
    if(is.vector(x.train) | is.factor(x.train)) x.train = data.frame(x=x.train)
    if(is.vector(x.test) | is.factor(x.test)) x.test = data.frame(x=x.test)
 
    if(is.data.frame(x.train)) {
       if(nrow(x.test)) {
-         if(!is.data.frame(x.test)) stop('x.train is a data frame so x.test must be also')
-	 xtemp = rbind(x.train,x.test)
-	 xmtemp = makeind(xtemp)
-	 x.train = xmtemp[1:nrow(x.train),,drop=FALSE]
-	 x.test = xmtemp[nrow(x.train) + 1:nrow(x.test),,drop=FALSE]
+         if(!is.data.frame(x.test)) {
+             stop('x.train is a data frame so x.test must be also')
+         }
+	     xtemp = rbind(x.train,x.test)
+	     xmtemp = makeind(xtemp)
+	     x.train = xmtemp[1:nrow(x.train),,drop=FALSE]
+	     x.test = xmtemp[nrow(x.train) + 1:nrow(x.test),,drop=FALSE]
       } else {
          x.train = makeind(x.train)
       }
    }
 
-   #check input arguments:
+   ## check input arguments:
    if((!is.matrix(x.train)) || (typeof(x.train)!="double")) stop("argument x.train must be a double matrix")
    if((!is.matrix(x.test)) || (typeof(x.test)!="double")) stop("argument x.test must be a double matrix")
    if((!is.vector(y.train)) || (typeof(y.train)!="double")) stop("argument y.train must be a double vector")
@@ -56,6 +56,7 @@ AFTrees = function(
    if(printcutoffs <0) stop("input printcutoffs must be >=0")
    if(power <= 0) stop("power must be positive")
    if(base <= 0) stop("base must be positive")
+   ############################################################################## 
 
    null_lm <- survreg(Surv(y.train, status) ~ 1, dist="lognormal")
    null_sig <- null_lm$scale
@@ -92,7 +93,6 @@ AFTrees = function(
    ## put sigquant argument here
    kappa <- FindKappa(q=sigquant, sigsq.hat=sigest*sigest, nu=sigdf)
 
-   #nclust = 50
    #nclust = 200
    nclust = max.error.clust
    npind = ifelse(nonparametric, 1, 0)
@@ -113,26 +113,36 @@ AFTrees = function(
                    as.double(zeta))
 
    # now read in the results...
-       ## look at this: sigma is multiplied by (rgy[2] - rgy[1])
-       sigma = cres$sdraw
-      # sigma = cres$sdraw
+   ## look at this: sigma is multiplied by (rgy[2] - rgy[1])
+   sigma = cres$sdraw
+
+   first.sigma = NULL
+   first.m.train = NULL
+   first.m.test = NULL
+   
+   if(keepburnin) {
        first.sigma = sigma[1:ncskip] # we often want the sigma draws
-       sigma = sigma[ncskip+(1:ncpost)]
+   }
+   sigma = sigma[ncskip+(1:ncpost)]
 
    yhat.train = yhat.test = yhat.train.mean = yhat.test.mean = NULL
    varcount = NULL
 
-   if (keeptrainfits) {
-      yhat.train = matrix(cres$trdraw,nrow=nctot,byrow=T)[(ncskip+1):nctot,]
-      ## also not that yhat is normalized later
-       yhat.train = yhat.train + null_intercept
-       #yhat.train = yhat.train
+   if(keeptrainfits) {
+       tmp <- matrix(cres$trdraw, nrow=nctot,byrow=TRUE) ## this should be nctot x n
+       if(keepburnin) {
+          first.m.train = tmp[1:ncskip,] + null_intercept
+       }
+       yhat.train = tmp[(ncskip+1):nctot,] + null_intercept
        yhat.train.mean <- colMeans(yhat.train)
    }
    if (nrow(x.test)) {
-      yhat.test = matrix(cres$tedraw,nrow=nctot,byrow=T)[(ncskip+1):nctot,]
-      yhat.test = yhat.test + null_intercept
-      yhat.test.mean <- colMeans(yhat.test)
+       tmp <- matrix(cres$tedraw, nrow=nctot, byrow=TRUE) ## 
+       if(keepburnin) {
+          first.m.test <- tmp[1:ncskip,] + null_intercept
+       }
+       yhat.test = tmp[(ncskip+1):nctot,] + null_intercept
+       yhat.test.mean <- colMeans(yhat.test)
    }
    mix.prop = matrix(cres$mixdraw,nrow=nctot,byrow=TRUE)[(ncskip+1):nctot,]
    locations = matrix(cres$locdraw, nrow=nctot, byrow=TRUE)[(ncskip+1):nctot,]
@@ -143,6 +153,8 @@ AFTrees = function(
    retval = list(
       call=match.call(),
       first.sigma=first.sigma,
+      first.m.train=first.m.train,
+      first.m.test=first.m.test,
       sigma=sigma,
       sigest=sigest,
       m.train=yhat.train,
