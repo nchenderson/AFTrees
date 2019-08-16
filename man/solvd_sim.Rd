@@ -12,28 +12,29 @@ Note that this is just a simulated data set and does not contain any data from t
 \format{
   A data frame with 6249 observations on the following 22 variables.
   \describe{
-    \item{\code{ttodthorchfhosp}}{a numeric vector}
-    \item{\code{trt}}{a factor with levels \code{Placebo} \code{treatment}}
-    \item{\code{study}}{a factor with levels \code{SOLVD Prevention} \code{SOLVD Treatment}}
-    \item{\code{deathorchfhosp}}{a numeric vector}
-    \item{\code{age}}{a numeric vector}
-    \item{\code{smoke}}{a factor with levels \code{Current} \code{Former} \code{Never}}
-    \item{\code{diabet}}{a numeric vector}
-    \item{\code{lvef}}{a numeric vector}
-    \item{\code{himi}}{a numeric vector}
-    \item{\code{nyha}}{a numeric vector}
-    \item{\code{depedema}}{a numeric vector}
-    \item{\code{crackles}}{a numeric vector}
-    \item{\code{weight}}{a numeric vector}
-    \item{\code{anydiurbl}}{a numeric vector}
-    \item{\code{avsys}}{a numeric vector}
-    \item{\code{avdia}}{a numeric vector}
-    \item{\code{beat}}{a numeric vector}
-    \item{\code{creatinine}}{a numeric vector}
-    \item{\code{sodium}}{a numeric vector}
-    \item{\code{copd}}{a numeric vector}
-    \item{\code{histk}}{a numeric vector}
-    \item{\code{gender}}{a factor with levels \code{female} \code{male}}
+    \item{\code{ttodthorchfhosp}}{Time to death or hospitalization.}
+    \item{\code{trt}}{Treatment assignment. Factor with levels: \code{Placebo} and \code{treatment}}
+    \item{\code{study}}{a factor representing one of the two SOLVD studies.
+    This has levels \code{SOLVD Prevention} \code{SOLVD Treatment}.}
+    \item{\code{deathorchfhosp}}{Event indicator. A binary numeric vector.}
+    \item{\code{age}}{Age. A numeric vector.}
+    \item{\code{smoke}}{Smoking history. A factor with levels: \code{Current}, \code{Former}, and \code{Never}.}
+    \item{\code{diabet}}{Diabetic indicator. A binary numeric vector.}
+    \item{\code{lvef}}{Ejection fraction. A numeric vector.}
+    \item{\code{himi}}{History of Myocardial Infarction. A numeric vector.}
+    \item{\code{nyha}}{New York heart association score. A numeric vector.}
+    \item{\code{depedema}}{Dependent edema. A binary numeric vector.}
+    \item{\code{crackles}}{Lung crackles. A binary numeric vector.}
+    \item{\code{weight}}{Body weight. A numeric vector.}
+    \item{\code{anydiurbl}}{Any use of a diuretic. A binary numeric vector.}
+    \item{\code{avsys}}{Systolic blood pressure. A numeric vector.}
+    \item{\code{avdia}}{Diastolic blood pressure. A numeric vector.}
+    \item{\code{beat}}{Beats per minute. A numeric vector.}
+    \item{\code{creatinine}}{Creatinine levels. A numeric vector.}
+    \item{\code{sodium}}{Sodium. A numeric vector.}
+    \item{\code{copd}}{Chronic Obstructive Pulmonary Disease. A binary numeric vector.}
+    \item{\code{histk}}{History of stroke. A binary numeric vector.}
+    \item{\code{gender}}{A factor with levels: \code{female} and \code{male}.}
   }
 }
 \details{
@@ -48,5 +49,6 @@ Note that this is just a simulated data set and does not contain any data from t
 \examples{
 data(solvd_sim)
 head(solvd_sim)
+summary(solvd_sim$ttodthorchfhosp)
 }
 \keyword{datasets}
