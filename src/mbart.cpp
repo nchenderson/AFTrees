@@ -86,10 +86,6 @@ void mbart(int *iNumObs, int *iNumX, int *inrowTest,
 
    bool non_par = (*npind == 1);
 
-   if(*verbose) {
-       Rprintf("\n\nRunning BART with numeric y\n\n");
-   }
-
    NumObs = *iNumObs;
    NumX = *iNumX;
    int nrowTest = *inrowTest;
