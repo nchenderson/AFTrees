@@ -141,9 +141,6 @@ void mbart(int *iNumObs, int *iNumX, int *inrowTest,
       Rprintf("Prior:\n");
       Rprintf("\tk: %lf\n",kfac);
 
-     // Rprintf("\tdegrees of freedom in sigma prior: %d\n",sigdf);
-    //  Rprintf("\tquantile in sigma prior: %lf\n",sigquant);
-
       Rprintf("\tpower and base for tree prior: %lf %lf\n",PriParams.power,PriParams.base);
       Rprintf("\tuse quantiles for rule cut points: %d\n",usequants);
       Rprintf("data:\n");
@@ -279,7 +276,6 @@ void mbart(int *iNumObs, int *iNumX, int *inrowTest,
       for(int j=1;j<=NTree;j++) mtrainFits[j][i] =0.0;
    }
    double** mtestFits = Lib::almat(nrowTest,NTree);
-   //double** mtestFits = Lib::almat(NTree,nrowTest);
 
    int Done=0;
    double alpha=0.0;
@@ -335,7 +331,6 @@ void mbart(int *iNumObs, int *iNumX, int *inrowTest,
 
    if(*verbose) Rprintf("Running mcmc loop:\n");
    for (int k=1;k<=ndPost;k++) {
-      //if(k%printevery== 0) std::cout << "iteration: " << k << " (of " << ndPost << ")" << std::endl;
       if(*verbose && (k%printevery== 0)) {
          Rprintf("iteration: %d (of %d)\n",k,ndPost);
          //Rprintf("Beta draw: %f \n", mix.tst);
