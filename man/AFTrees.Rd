@@ -15,8 +15,8 @@ AFTrees(
    ntree=200, max.error.clust=200,
    ndpost=1000, nskip=100,
    printevery=100, keepevery=1, keeptrainfits=TRUE,
-   usequants=TRUE, numcut=100, printcutoffs=0,
-   verbose=TRUE)
+   keepburnin=FALSE, usequants=TRUE, numcut=100,
+   printcutoffs=0, verbose=TRUE)
 \method{plot}{aftree}(
    x,
    plquants=c(.05,.95), cols =c('blue','black'),
@@ -30,26 +30,24 @@ AFTrees(
    If a variable is a factor in a data frame, it is replaced with dummies.
    Note that q dummies are created if q>2 and
    one dummy is created if q=2, where q is the number of levels of the factor.
-   \code{makeind} is used to generate the dummies.
    }
    \item{y.train}{
-    A vector follow-up times
+    A vector follow-up times.
    }
    \item{status}{
-    A vector of censoring indicators; status = 1 indicates that the event was observed
+    A vector of event indicators; status = 1 indicates that the event was observed
     while status = 0 indicates the observation was right-censored.
    }
    \item{x.test}{
    Explanatory variables for test (out of sample) data.\cr
    Should have same structure as x.train.\cr
-   \code{bart} will generate draws of \eqn{f(x)} for each \eqn{x} which is a row of x.test.
+   \code{AFTrees} will generate draws of \eqn{m(x)} for each \eqn{x} which is a row of x.test.
    }
    \item{sigest}{
-   Rough estimate for the error standard deviation.
-   If sigest=NA then this will be calculated.
+   Rough, preliminary estimate for the residual standard deviation. If sigest=NA then this will be calculated internally.
    }
    \item{sigdf}{
-   Degrees of freedom for error variance prior.
+   Degrees of freedom for residual variance prior.
    }
    \item{sigquant}{
    The quantile of the prior that the rough estimate (see sigest) is placed at.
@@ -60,11 +58,8 @@ AFTrees(
    }
    \item{k}{
    For numeric y,
-   k is the number of prior standard deviations \eqn{E(Y|x) = f(x)} is away from +/-.5.
+   k is the number of prior standard deviations \eqn{E(log T|x) = m(x)} is away from +/-.5.
    The response (y.train) is internally scaled to range from -.5 to .5.
-   For binary y,
-   k is the number of prior standard deviations \eqn{f(x)} is away from +/-3.
-   In both cases, the bigger k is, the more conservative the fitting will be.
    }
    \item{power}{
    Power parameter for tree prior.
@@ -73,10 +68,11 @@ AFTrees(
    Base parameter for tree prior.
    }
    \item{nonparametric}{
-   An indicator of whether to use a nonparametric vs. semi-parametric fit
+   An indicator of whether to use a nonparametric vs. semi-parametric model. A semi-parametric
+   model assumes a parametric model for the residual distribution.
    }
    \item{ntree}{
-   The number of trees in the sum.
+   The number of trees used for the regression function \eqn{m(x)}.
    }
    \item{max.error.clust}{
      The maximum number of clusters (or mixture components) that the error distribution may have.
@@ -92,13 +88,16 @@ AFTrees(
    }
    \item{keepevery}{
    Every keepevery draw is kept to be returned to the user.\cr
-   A \dQuote{draw} will consist of values of the error standard deviation (\eqn{\sigma}{sigma})
-   and \eqn{f^*(x)}{f*(x)}
-   at \eqn{x} = rows from the train(optionally) and test data, where \eqn{f^*}{f*} denotes
-   the current draw of \eqn{f}.
+   A \dQuote{draw} will consist of values of the residual standard deviation (\eqn{\sigma}{sigma})
+   and \eqn{m^*(x)}{m*(x)}
+   at \eqn{x} = rows from the train(optionally) and test data, where \eqn{m^*}{m*} denotes
+   the current draw of \eqn{m}.
+   }
+   \item{keepburnin}{
+   If true, we keep every \code{keepevery} draw from the burn in phase.
    }
    \item{keeptrainfits}{
-   If true the draws of \eqn{f(x)} for \eqn{x} = rows of x.train are returned.
+   If true, the draws of \eqn{m(x)} for \eqn{x} = rows of x.train are returned.
    }
    \item{usequants}{
    Decision rules in the tree are of the form
@@ -141,7 +140,7 @@ AFTrees(
    plquants is a double vector of length two giving the lower and upper quantiles.
    }
    \item{cols}{
-   Vector of two colors.  First color is used to plot the median of \eqn{f(x)} and
+   Vector of two colors. First color is used to plot the median of \eqn{m(x)} and
    the second color is used to plot the lower and upper quantiles.
    }
    \item{\dots}{
@@ -152,8 +151,7 @@ AFTrees(
    The aftrees function fits an Accelerated Failure Time (AFT) model where
    the regression function is modeled with Bayesian Additive Regression
    Trees (BART) while the residual distribution is modeled nonparametrically.
-   Computation is done via MCMC.
-   At each MCMC interation, we produce a draw from the joint posterior
+   Computation is done via MCMC. At each MCMC interation, we produce a draw from the joint posterior
    \eqn{(m,f) | (x,y)}{(f,sigma) \| (x,y)}.
 }
 \value{
