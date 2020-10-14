@@ -158,20 +158,23 @@ AFTrees(
    \code{AFTree} returns a list assigned class \sQuote{aftree}.
    The list has the following components:
 
-   \item{yhat.train}{
+   \item{m.train}{
    A matrix with (ndpost/keepevery) rows and nrow(x.train) columns.
-   Each row corresponds to a draw \eqn{f^*}{f*} from the posterior of \eqn{f}
-   and each column corresponds to a row of x.train.
-   The \eqn{(i,j)} value is \eqn{f^*(x)}{f*(x)} for the \eqn{i^{th}}{i\^th} kept draw of \eqn{f}
+   Each row corresponds to a draw \eqn{m^*}{m*} from the posterior of the regression function \eqn{m}
+   and each column corresponds to a row of x.train. The function \eqn{m} is the regression function. This represents
+   expected log-survival time in an AFT model.
+   The \eqn{(i,j)} value is \eqn{m^*(x)}{m*(x)} for the \eqn{i^{th}}{i\^th} kept draw of \eqn{m}
    and the \eqn{j^{th}}{j\^th} row of x.train.\cr
    Burn-in is dropped.
    }
 
-   \item{yhat.test}{Same as yhat.train but now the x's are the rows of the test data.}
-   \item{yhat.train.mean}{train data fits = mean of yhat.train columns.}
-   \item{yhat.test.mean}{test data fits = mean of yhat.test columns.}
+   \item{m.test}{Same as m.train except that the x's are the rows of the test data.}
+   \item{m.train.mean}{train data fits = mean of m.train columns.}
+   \item{m.test.mean}{test data fits = mean of m.test columns.}
    \item{sigma}{post burn in draws of sigma, length = ndpost/keepevery.}
    \item{first.sigma}{burn-in draws of sigma.}
+   \item{mix.prop}{posterior draws of the vector of mixture proportions in the DP-mixture residual distribution.}
+   \item{locations}{posterior draws of the vector of mixture locations in the DP-mixture residual distribution.}
    \item{varcount}{a matrix with (ndpost/keepevery) rows and nrow(x.train) columns.
    Each row is for a draw. For each variable (corresponding to the columns),
    the total count of the number of times
@@ -247,7 +250,8 @@ lines(age, muhat[Trt==1], col="red")
 
 ### plot true error density and posterior error densities
 tgrid <- seq(-3, 3, length.out=200)
-plot(tgrid, .5*dnorm(tgrid, mean=-1,sd=.5) + .5*dnorm(tgrid,mean=1,sd=.5), type="n")
+plot(tgrid, .5*dnorm(tgrid, mean=-1,sd=.5) + .5*dnorm(tgrid,mean=1,sd=.5), type="n",
+    ylab="Density")
 lines(tgrid, .5*dnorm(tgrid, mean=-1,sd=.5) + .5*dnorm(tgrid,mean=1,sd=.5), col="red",lwd=3)
 for(k in 110:120) {
   FF <- dnorm(outer(tgrid, aftFit$locations[k,], FUN="-"), sd=aftFit$sigma[k])

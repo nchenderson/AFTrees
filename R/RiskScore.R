@@ -1,6 +1,6 @@
-RiskScore <- function(object, type=NULL) {
+RiskScore <- function(object) {
      rs <- exp(-object$m.train.mean)
-     
+
      rs.test <- NULL
      if(!is.null(object$m.test)) {
         rs.test <- exp(-object$m.test.mean)
