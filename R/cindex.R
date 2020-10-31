@@ -13,11 +13,19 @@
 #   return(ans)
 #}
 
-Cstat <- function(times, status, risk.score, tau)
+Cstat <- function(times, status, risk.score, time.stop=NULL)
 {
-    cens <- KMEstCens(times, status, tau)  ### look up this function
+    if(is.null(time.stop)) {
+        tau <- max(times)
+    }
+    else {
+        tau <- time.stop
+    }
+    keep <- times < tau
+    cens <- KMEstCens(times, status)  ### look up this function
     GXi <- cens$surv[match(times, cens$distinct, nomatch = 1)]
-    Wi <- (1/GXi/GXi) * status * as.numeric(times < tau)
+    Wi <- rep(0, length(GXi))
+    Wi[keep] <- (1/(GXi[keep]*GXi[keep]))*status[keep]
 
     cstat = concordance(times, status, risk.score, Wi)
     ans <- list()
@@ -35,23 +43,22 @@ Cstat <- function(times, status, risk.score, tau)
 #        CSTAT = as.double(0), PACKAGE = "survC1")
 #    return(out$CSTAT)
 #}
-KMEstCens <- function(time, status, tau)  {
-    distinct <- unique(sort(time))
-    t <- length(distinct)
-    n <- length(time)
-    surv <- rep(0, t)
-    yi <- sum(as.numeric(time >= distinct[1]))
-    di <- sum(as.numeric(time == distinct[1] & status == 0))
-    surv[1] <- 1 * (1 - di/yi)
-    for (i in 2:t) {
-        yi <- sum(as.numeric(time >= distinct[i]))
-        di <- sum(as.numeric(time == distinct[i] & status == 0))
-        surv[i] <- surv[i - 1] * (1 - di/yi)
-    }
-    surv[2:t] <- surv[1:(t - 1)]
-    surv[1] <- 1
-    return(list(surv = surv, distinct = distinct))
+KMEstCens <- function(time, status)  {
+   distinct <- unique(sort(time))
+   t <- length(distinct)
+   n <- length(time)
+   surv <- rep(0, t)
+   yi <- sum(as.numeric(time >= distinct[1]))
+   di <- sum(as.numeric(time == distinct[1] & status == 0))
+   surv[1] <- 1 * (1 - di/yi)
+   for (i in 2:t) {
+      yi <- sum(as.numeric(time >= distinct[i]))
+      di <- sum(as.numeric(time == distinct[i] & status == 0))
+      surv[i] <- surv[i - 1] * (1 - di/yi)
+   }
+   return(list(surv = surv, distinct = distinct))
 }
+
 
 concordance <- function(time, status, rs, weight) {
      ### rs- risk score
@@ -63,18 +70,19 @@ concordance <- function(time, status, rs, weight) {
       ind <- status==1
       for(i in 1:n) {
           for(j in 1:n) {
-             if(time[i] < time[j]) {
-                   USEP=USEP+weight[i]
-                   if(rs[i] > rs[j]) {
-                      WK1 = WK1 + weight[i]
-                   }
-                   if(rs[i] == rs[j]) {
-                      WK1 = WK1 + weight[i]/2
-                   }
+             if(time[i] < time[j] & i!= j) {
+                  USEP <- USEP + weight[i]
+                  if(rs[i] > rs[j]) {
+                      WK1 <- WK1 + weight[i]
+                  }
+             }
+             if((time[i] == time[j] || rs[i] == rs[j]) && i != j) {
+                  USEP <- USEP + weight[i]/2
+                  WK1 <- WK1 + weight[i]/4
              }
          }
       }
-      CSTAT=WK1/USEP
+      CSTAT <- WK1/USEP
       return(CSTAT)
 }
 
