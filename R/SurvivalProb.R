@@ -50,7 +50,7 @@ SurvivalProb <- function(object, time.points=NULL, xind.train=NULL, xind.test=NU
          SS.train <- SS.train.mean <- NULL
      } else if(train.only) {
         if(is.null(xind.train)) {
-          ntrain <- length(object$m.train)
+          ntrain <- ncol(object$m.train)
           xind.train <- 1:ntrain
         }
          if(length(time.points) > 1) {
